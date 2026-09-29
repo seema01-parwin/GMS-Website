@@ -1,0 +1,605 @@
+/* =======================================================
+   CAREERS — theme-aware band (light + dark)
+   ======================================================= */
+
+.careers-section {
+  /* ---- theme variables : LIGHT ---- */
+  --c-surface: rgba(56, 189, 248, 0.07);
+  --c-surface-strong: rgba(56, 189, 248, 0.14);
+  --c-border: rgba(4, 140, 182, 0.20);
+  --c-border-strong: rgba(4, 140, 182, 0.55);
+  --c-text: var(--text);
+  --c-muted: var(--text-secondary);
+  --c-accent: var(--accent);
+  --c-accent-2: var(--accentbtn);
+  --c-sheen: rgba(56, 189, 248, 0.85);
+  --c-shadow: 0 18px 44px rgba(4, 46, 94, 0.12);
+  --c-glow-a: rgba(56, 189, 248, 0.16);
+  --c-glow-b: rgba(126, 232, 250, 0.20);
+  --c-grid: rgba(4, 140, 182, 0.06);
+  --c-watermark: rgba(4, 140, 182, 0.10);
+
+  position: relative;
+  overflow: hidden;
+  padding: 96px 4rem;
+  background:
+    radial-gradient(1100px 560px at 85% -10%, var(--c-glow-a), transparent 60%),
+    radial-gradient(900px 520px at -5% 115%, var(--c-glow-b), transparent 60%),
+    var(--bg);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+body.dark-mode .careers-section {
+  /* ---- theme variables : DARK ---- */
+  --c-surface: rgba(132, 190, 255, 0.055);
+  --c-surface-strong: rgba(132, 190, 255, 0.12);
+  --c-border: rgba(122, 183, 255, 0.16);
+  --c-border-strong: rgba(56, 189, 248, 0.5);
+  --c-text: #eaf3ff;
+  --c-muted: #9db3d8;
+  --c-accent: #38bdf8;
+  --c-accent-2: #7ee8fa;
+  --c-sheen: rgba(126, 232, 250, 0.9);
+  --c-shadow: 0 18px 44px rgba(3, 10, 32, 0.55);
+  --c-glow-a: rgba(56, 189, 248, 0.20);
+  --c-glow-b: rgba(126, 232, 250, 0.14);
+  --c-grid: rgba(122, 183, 255, 0.05);
+  --c-watermark: rgba(122, 183, 255, 0.10);
+
+  background:
+    radial-gradient(1100px 560px at 85% -10%, var(--c-glow-a), transparent 60%),
+    radial-gradient(900px 520px at -5% 115%, var(--c-glow-b), transparent 60%),
+    var(--bg);
+}
+
+/* ---- ambient glows ---- */
+.careers-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(70px);
+  pointer-events: none;
+}
+
+.careers-glow--a {
+  width: 360px;
+  height: 360px;
+  top: -120px;
+  right: -60px;
+  background: var(--c-glow-a);
+}
+
+.careers-glow--b {
+  width: 300px;
+  height: 300px;
+  bottom: -140px;
+  left: -60px;
+  background: var(--c-glow-b);
+}
+
+/* ---- faint blueprint grid ---- */
+.careers-gridline {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(var(--c-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--c-grid) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(70% 90% at 50% 50%, #000 30%, transparent 100%);
+  -webkit-mask-image: radial-gradient(70% 90% at 50% 50%, #000 30%, transparent 100%);
+}
+
+/* ---- oversized watermark ---- */
+.careers-watermark {
+  position: absolute;
+  top: 10px;
+  right: -8px;
+  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+  font-weight: 800;
+  font-size: clamp(80px, 15vw, 210px);
+  line-height: 1;
+  letter-spacing: 0.02em;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--c-watermark);
+  pointer-events: none;
+  user-select: none;
+}
+
+.careers-inner {
+  position: relative;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+/* ---- header ---- */
+.careers-header {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 48px;
+  align-items: center;
+  margin-bottom: 56px;
+}
+
+.careers-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--c-accent);
+  background: var(--c-surface-strong);
+  border: 1px solid var(--c-border);
+  padding: 7px 14px;
+  margin-bottom: 22px;
+}
+
+.careers-pill-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--c-accent);
+  box-shadow: 0 0 12px var(--c-sheen);
+  animation: careers-pulse 2.2s ease-in-out infinite;
+}
+
+@keyframes careers-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.55; transform: scale(0.8); }
+}
+
+.careers-title {
+  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+  font-weight: 800;
+  font-size: clamp(2.2rem, 4.6vw, 3.4rem);
+  line-height: 1.12;
+  letter-spacing: -0.015em;
+  color: var(--c-text);
+  margin: 0 0 18px;
+}
+
+.careers-title em {
+  font-style: italic;
+  font-weight: 600;
+  color: var(--c-accent-2);
+}
+
+.careers-title-accent {
+  background: linear-gradient(92deg, var(--accent), var(--accentbtn));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.careers-sub {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--c-muted);
+  max-width: 560px;
+  margin: 0 0 28px;
+}
+
+.careers-actions {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.careers-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 28px;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  color: var(--bg);
+  background: linear-gradient(92deg, var(--accent), var(--accentbtn));
+  border-radius: 999px;
+  box-shadow: 0 6px 22px rgba(56, 189, 248, 0.30);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.careers-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(56, 189, 248, 0.45);
+}
+
+.careers-btn svg {
+  transition: transform 0.25s ease;
+}
+
+.careers-btn:hover svg {
+  transform: translateX(3px);
+}
+
+.careers-actions-note {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  color: var(--c-muted);
+  opacity: 0.85;
+}
+
+/* ---- pledge panel (rotating badge + stamps) ---- */
+.careers-header-side {
+  justify-self: end;
+  width: 100%;
+  max-width: 460px;
+}
+
+.careers-panel {
+  position: relative;
+  overflow: hidden;
+  padding: 26px 26px 22px;
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.careers-panel:hover {
+  border-color: var(--c-border-strong);
+  box-shadow: var(--c-shadow);
+}
+
+.careers-panel-corner {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--c-border-strong);
+  pointer-events: none;
+  opacity: 0.85;
+}
+
+.careers-panel-corner--tl { top: -1px; left: -1px; border-right: 0; border-bottom: 0; }
+.careers-panel-corner--tr { top: -1px; right: -1px; border-left: 0; border-bottom: 0; }
+.careers-panel-corner--bl { bottom: -1px; left: -1px; border-right: 0; border-top: 0; }
+.careers-panel-corner--br { bottom: -1px; right: -1px; border-left: 0; border-top: 0; }
+
+.careers-panel-head {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.careers-panel-headline {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.careers-panel-kicker {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--c-accent);
+}
+
+.careers-panel-title {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 800;
+  font-size: 1.25rem;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  color: var(--c-text);
+}
+
+.careers-stamps {
+  list-style: none;
+  margin: 0;
+  padding: 16px 0 0;
+  border-top: 1px dashed var(--c-border);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.careers-stamp {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 11px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--c-muted);
+  border: 1px dashed var(--c-border-strong);
+  transition: color 0.25s ease, transform 0.25s ease;
+}
+
+.careers-stamp:nth-child(odd) { transform: rotate(-1.2deg); }
+.careers-stamp:nth-child(even) { transform: rotate(1.2deg); }
+.careers-stamp:nth-child(odd):hover { transform: rotate(0deg) translateY(-2px); }
+.careers-stamp:nth-child(even):hover { transform: rotate(0deg) translateY(-2px); }
+
+.careers-stamp svg {
+  flex-shrink: 0;
+  color: var(--c-accent);
+}
+
+/* ---- bento grid ---- */
+.careers-bento {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: auto auto auto;
+  gap: 16px;
+}
+
+.careers-card {
+  position: relative;
+  grid-column: span 4;
+  overflow: hidden;
+  padding: 30px 28px;
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.careers-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--c-sheen), transparent);
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+
+.careers-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--c-border-strong);
+  box-shadow: var(--c-shadow);
+}
+
+.careers-card:hover::before {
+  opacity: 1;
+}
+
+.careers-card--tall {
+  grid-column: span 4;
+  grid-row: span 2;
+  display: flex;
+  flex-direction: column;
+  padding: 34px 30px;
+}
+
+.careers-card--wide {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  padding: 24px 30px;
+}
+
+.careers-wide-text {
+  flex: 1;
+}
+
+.careers-wide-text .careers-card-title,
+.careers-wide-text .careers-card-desc {
+  margin: 0;
+}
+
+.careers-card-glow {
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  top: -70px;
+  right: -70px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--c-glow-a), transparent 70%);
+  pointer-events: none;
+}
+
+.careers-card-num {
+  position: absolute;
+  top: 22px;
+  right: 24px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14px;
+  font-weight: 700;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--c-border-strong);
+}
+
+.careers-card-icon {
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  color: var(--c-accent-2);
+  background: var(--c-surface-strong);
+  border: 1px solid var(--c-border);
+  margin-bottom: 18px;
+  transition: transform 0.3s ease;
+}
+
+.careers-card:hover .careers-card-icon {
+  transform: rotate(-6deg) scale(1.06);
+}
+
+.careers-card-title {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--c-text);
+  margin: 0 0 10px;
+}
+
+.careers-card-desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--c-muted);
+  margin: 0;
+}
+
+.careers-card-list {
+  list-style: none;
+  margin: 18px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.careers-card-list li {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-family: 'Inter', sans-serif;
+  font-size: 13.5px;
+  color: var(--c-muted);
+}
+
+.careers-card-list svg {
+  flex-shrink: 0;
+  color: var(--c-accent);
+}
+
+/* ---- how to apply rail ---- */
+.careers-steps {
+  margin-top: 72px;
+}
+
+.careers-rail {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 14px;
+}
+
+.careers-rail-line {
+  position: absolute;
+  top: 30px;
+  left: 8%;
+  right: 8%;
+  border-top: 1px dashed var(--c-border);
+  pointer-events: none;
+}
+
+.careers-step {
+  position: relative;
+  padding-top: 74px;
+}
+
+.careers-step-num {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: grid;
+  place-items: center;
+  width: 60px;
+  height: 60px;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  font-size: 22px;
+  background: var(--bg);
+  border: 1px solid var(--c-border-strong);
+  color: var(--c-accent);
+  box-shadow: 0 0 0 4px var(--bg), 0 0 18px rgba(56, 189, 248, 0.22);
+}
+
+.careers-step-title {
+  display: block;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--c-text);
+  margin-bottom: 6px;
+}
+
+.careers-step-desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--c-muted);
+}
+
+/* ---- motion ---- */
+@media (prefers-reduced-motion: reduce) {
+  .careers-pill-dot {
+    animation: none;
+  }
+
+  .careers-card,
+  .careers-btn {
+    transition: none;
+  }
+}
+
+/* ---- responsive ---- */
+@media (max-width: 992px) {
+  .careers-section {
+    padding: 72px 24px;
+  }
+
+  .careers-header {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .careers-header-side {
+    justify-self: start;
+    max-width: 520px;
+  }
+
+  .careers-card--tall {
+    grid-column: span 6;
+    grid-row: auto;
+  }
+
+  .careers-card {
+    grid-column: span 6;
+  }
+
+  .careers-rail {
+    grid-template-columns: repeat(3, 1fr);
+    row-gap: 40px;
+  }
+
+  .careers-rail-line {
+    display: none;
+  }
+}
+
+@media (max-width: 576px) {
+  .careers-section {
+    padding: 56px 20px;
+  }
+
+  .careers-header-side {
+    max-width: none;
+  }
+
+  .careers-panel-head {
+    flex-wrap: wrap;
+  }
+
+  .careers-card--tall,
+  .careers-card {
+    grid-column: 1 / -1;
+  }
+
+  .careers-card--wide {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .careers-rail {
+    grid-template-columns: 1fr;
+    row-gap: 34px;
+  }
+}

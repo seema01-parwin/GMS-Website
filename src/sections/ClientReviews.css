@@ -1,0 +1,195 @@
+.reviews-section {
+  padding: 80px 4rem;
+  background: var(--bg);
+}
+
+.reviews-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.reviews-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.reviews-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'JetBrains Mono', 'Inter', monospace;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accentbtn);
+  background: var(--accent-bg);
+  border: 1px solid rgba(4, 140, 182, 0.25);
+  padding: 5px 14px;
+  clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+}
+
+.reviews-eyebrow-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accentbtn);
+}
+
+.reviews-title {
+  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+  font-weight: 800;
+  font-size: clamp(2rem, 4vw, 3rem);
+  letter-spacing: -0.01em;
+  color: var(--text);
+  margin: 16px 0 0;
+}
+
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.reviews-card {
+  position: relative;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  padding: 36px;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.reviews-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(4, 140, 182, 0.1);
+  border-color: rgba(4, 140, 182, 0.3);
+}
+
+.reviews-quote-icon {
+  position: absolute;
+  top: 24px;
+  right: 28px;
+  color: var(--accentbtn);
+  opacity: 0.12;
+  pointer-events: none;
+}
+
+.reviews-stars {
+  display: flex;
+  gap: 3px;
+  margin-bottom: 20px;
+  color: #f59e0b;
+}
+
+.reviews-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.75;
+  color: var(--text);
+  margin: 0 0 24px;
+  flex: 1;
+}
+
+.reviews-author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+}
+
+.reviews-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accentbtn), var(--accent));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.reviews-avatar span {
+  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  color: #ffffff;
+  letter-spacing: 0.5px;
+}
+
+.reviews-author-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.reviews-author-name {
+  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--text);
+}
+
+.reviews-author-role {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.reviews-service-badge {
+  display: inline-block;
+  margin-top: 16px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--accentbtn);
+  background: var(--accent-bg);
+  border: 1px solid rgba(4, 140, 182, 0.2);
+  padding: 4px 10px;
+  width: fit-content;
+}
+
+@media (max-width: 900px) {
+  .reviews-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .reviews-section {
+    padding: 64px 20px;
+  }
+
+  .reviews-card {
+    padding: 28px 24px;
+  }
+
+  .reviews-quote-icon {
+    top: 18px;
+    right: 18px;
+  }
+}
+
+body.dark-mode .reviews-card {
+  background: var(--card-bg);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .reviews-card:hover {
+  border-color: rgba(56, 189, 248, 0.3);
+}
+
+body.dark-mode .reviews-quote-icon {
+  color: var(--accent);
+  opacity: 0.18;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reviews-card {
+    animation: none !important;
+  }
+}

@@ -1,0 +1,110 @@
+:root {
+  /* Light Theme (Default) */
+  --bg-color: #ffffff;
+  --text-color: #111827;
+  --navbar-bg: #ffffff;
+  --card-bg: #f8fafc;
+  --border-color: #e5e7eb;
+  --primary-color: #38bdf8;
+
+  /* Scrollbar (light) */
+  --scroll-thumb: #c6d4d8;
+  --scroll-track: #ffffff;
+
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body.dark-mode {
+  /* Dark Theme */
+  --bg-color: #0f172a;
+  --text-color: #e2e8f0;
+  --navbar-bg: #0f172a;
+  --card-bg: #111827;
+  --border-color: rgba(255,255,255,0.08);
+  --primary-color: #38bdf8;
+
+  /* Scrollbar (dark) */
+  --scroll-thumb: #33415e;
+  --scroll-track: #0f172a;
+}
+
+/* Scrollbar pseudo-elements inherit from the root element,
+   not <body> — mirror the dark values on :root so the page
+   scrollbar picks them up in dark mode. */
+:root:has(body.dark-mode) {
+  --scroll-thumb: #33415e;
+  --scroll-track: #0f172a;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  overflow-x: clip;
+
+  background: var(--bg-color);
+  color: var(--text-color);
+
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  font-family: inherit;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* =======================================================
+   Custom scrollbar — adapts to light & dark theme
+   ======================================================= */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scroll-thumb) var(--scroll-track);
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--scroll-track);
+  transition: background-color 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scroll-thumb);
+  border: 3px solid var(--scroll-track);
+  border-radius: 999px;
+  transition: background 0.25s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accentbtn, #048cb6);
+}
+
+::-webkit-scrollbar-corner {
+  background: var(--scroll-track);
+}

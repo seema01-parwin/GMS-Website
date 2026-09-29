@@ -1,0 +1,483 @@
+/* ============================================
+   CONTACT PAGE
+   ============================================ */
+
+/* ---- Shared ---- */
+.contact-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'JetBrains Mono', 'Inter', monospace;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accentbtn);
+  background: var(--accent-bg);
+  border: 1px solid rgba(4, 140, 182, 0.25);
+  padding: 5px 14px;
+  clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+}
+
+.contact-eyebrow-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accentbtn);
+}
+
+/* ============================================
+   HERO
+   ============================================ */
+.contact-hero {
+  background: #04212e;
+  padding: 140px 4rem 60px;
+  text-align: center;
+}
+
+.contact-hero-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.contact-hero-title {
+  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+  font-weight: 800;
+  font-size: clamp(2.6rem, 5vw, 4rem);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: #ffffff;
+  margin: 0;
+}
+
+.contact-hero-sub {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.65);
+  max-width: 520px;
+  margin: 18px auto 0;
+}
+
+.contact-breadcrumb {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 24px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.contact-breadcrumb-link {
+  color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.contact-breadcrumb-link:hover {
+  color: #ffffff;
+}
+
+.contact-breadcrumb-current {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* ============================================
+   CONTACT INFO CARDS
+   ============================================ */
+.contact-info {
+  background: var(--bg);
+  padding: 60px 4rem;
+}
+
+.contact-info-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.contact-info-card {
+  border: 1px solid var(--border);
+  background: var(--card-bg);
+  padding: 36px 28px;
+  text-align: center;
+  transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+.contact-info-card:hover {
+  border-color: rgba(4, 140, 182, 0.35);
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(4, 140, 182, 0.1);
+}
+
+.contact-info-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border: 1px solid rgba(4, 140, 182, 0.25);
+  background: rgba(4, 140, 182, 0.06);
+  color: var(--accentbtn);
+  margin: 0 auto 18px;
+}
+
+.contact-info-label {
+  display: block;
+  font-family: 'JetBrains Mono', 'Inter', monospace;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accentbtn);
+  margin-bottom: 8px;
+}
+
+.contact-info-title {
+  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--text);
+  margin: 0 0 10px;
+}
+
+.contact-info-value {
+  display: block;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+
+.contact-info-value--link {
+  color: var(--accentbtn);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.contact-info-value--link:hover {
+  color: var(--accent);
+}
+
+.contact-info-detail {
+  display: block;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+}
+
+/* ============================================
+   FORM + MAP
+   ============================================ */
+.contact-main {
+  background: var(--navbar-bgg);
+  padding: 80px 4rem;
+}
+
+.contact-main-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+/* ---- Form ---- */
+.contact-form-wrap {
+  border: 1px solid var(--border);
+  background: var(--card-bg);
+  padding: 48px 40px;
+}
+
+.contact-form-title {
+  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+  font-weight: 800;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  color: var(--text);
+  margin: 18px 0 0;
+  letter-spacing: -0.01em;
+}
+
+.contact-form-sub {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.92rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin: 10px 0 0;
+}
+
+.contact-form {
+  margin-top: 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.contact-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.contact-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.contact-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.contact-input {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.92rem;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  padding: 12px 16px;
+  outline: none;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  -webkit-appearance: none;
+}
+
+.contact-input::placeholder {
+  color: var(--text-secondary);
+  opacity: 0.6;
+}
+
+.contact-input:focus {
+  border-color: var(--accentbtn);
+  box-shadow: 0 0 0 3px rgba(4, 140, 182, 0.1);
+}
+
+.contact-select {
+  cursor: pointer;
+}
+
+.contact-textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.contact-submit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 32px;
+  background: var(--accentbtn);
+  color: #fff;
+  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s;
+  align-self: flex-start;
+}
+
+.contact-submit:hover {
+  filter: brightness(1.15);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(4, 140, 182, 0.3);
+}
+
+/* ---- Map / Office ---- */
+.contact-map-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.contact-map-placeholder {
+  border: 1px solid var(--border);
+  background: var(--card-bg);
+  height: 320px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  background-image:
+    radial-gradient(circle at 20% 50%, rgba(4, 140, 182, 0.06) 0%, transparent 50%),
+    radial-gradient(circle at 80% 50%, rgba(56, 189, 248, 0.04) 0%, transparent 50%);
+}
+
+.contact-map-overlay {
+  text-align: center;
+  padding: 32px;
+}
+
+.contact-map-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border: 1px solid rgba(4, 140, 182, 0.25);
+  background: rgba(4, 140, 182, 0.06);
+  color: var(--accentbtn);
+  margin: 0 auto 20px;
+}
+
+.contact-map-title {
+  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+  font-weight: 800;
+  font-size: 1.3rem;
+  color: var(--text);
+  margin: 0 0 10px;
+}
+
+.contact-map-address {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.92rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin: 0 0 20px;
+}
+
+.contact-map-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--accentbtn);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.contact-map-link:hover {
+  color: var(--accent);
+}
+
+/* ---- Other Offices ---- */
+.contact-office-card {
+  border: 1px solid var(--border);
+  background: var(--card-bg);
+  padding: 32px 28px;
+}
+
+.contact-office-title {
+  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--text);
+  margin: 0 0 20px;
+}
+
+.contact-office-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.contact-office-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.contact-office-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accentbtn);
+  margin-top: 6px;
+  flex-shrink: 0;
+}
+
+.contact-office-city {
+  display: block;
+  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 0.92rem;
+  color: var(--text);
+}
+
+.contact-office-addr {
+  display: block;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  margin-top: 2px;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 1024px) {
+  .contact-hero,
+  .contact-info,
+  .contact-main {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+@media (max-width: 900px) {
+  .contact-hero {
+    padding: 120px 20px 50px;
+  }
+
+  .contact-info {
+    padding: 48px 20px;
+  }
+
+  .contact-info-inner {
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .contact-main {
+    padding: 64px 20px;
+  }
+
+  .contact-main-inner {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .contact-form-wrap {
+    padding: 36px 28px;
+  }
+}
+
+@media (max-width: 640px) {
+  .contact-info-inner {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .contact-form-row {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .contact-form-wrap {
+    padding: 28px 20px;
+  }
+
+  .contact-map-placeholder {
+    height: 260px;
+  }
+
+  .contact-office-card {
+    padding: 24px 20px;
+  }
+
+  .contact-submit {
+    width: 100%;
+  }
+}

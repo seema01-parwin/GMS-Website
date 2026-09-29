@@ -1,0 +1,131 @@
+/* ============================================
+   FLOATING ICONS
+   ============================================ */
+.floating-icons-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.fi {
+  position: absolute;
+  color: var(--accentbtn);
+  opacity: 0.09;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  will-change: transform;
+}
+
+/* ---- Individual positions & animations ---- */
+.fi-1 {
+  top: 12%;
+  left: 6%;
+  animation: fiDrift1 12s infinite alternate ease-in-out;
+}
+
+.fi-2 {
+  top: 22%;
+  right: 8%;
+  animation: fiDrift2 14s infinite alternate ease-in-out;
+}
+
+.fi-3 {
+  top: 38%;
+  left: 10%;
+  animation: fiDrift3 11s infinite alternate ease-in-out;
+}
+
+.fi-4 {
+  top: 50%;
+  right: 5%;
+  animation: fiDrift1 15s infinite alternate ease-in-out 1s;
+}
+
+.fi-5 {
+  top: 62%;
+  left: 4%;
+  animation: fiDrift2 13s infinite alternate ease-in-out 0.5s;
+}
+
+.fi-6 {
+  top: 75%;
+  right: 10%;
+  animation: fiDrift3 12s infinite alternate ease-in-out 2s;
+}
+
+.fi-7 {
+  top: 15%;
+  left: 50%;
+  animation: fiDrift4 16s infinite alternate ease-in-out 0.8s;
+}
+
+.fi-8 {
+  top: 45%;
+  left: 70%;
+  animation: fiDrift5 14s infinite alternate ease-in-out 1.5s;
+}
+
+.fi-9 {
+  top: 82%;
+  left: 15%;
+  animation: fiDrift1 13s infinite alternate ease-in-out 0.3s;
+}
+
+.fi-10 {
+  top: 30%;
+  left: 85%;
+  animation: fiDrift2 11s infinite alternate ease-in-out 2.5s;
+}
+
+.fi-11 {
+  top: 55%;
+  left: 40%;
+  animation: fiDrift4 15s infinite alternate ease-in-out 1.2s;
+}
+
+.fi-12 {
+  top: 88%;
+  right: 20%;
+  animation: fiDrift5 12s infinite alternate ease-in-out 0.7s;
+}
+
+@keyframes fiDrift1 {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  100% { transform: translate(30px, -25px) rotate(12deg); }
+}
+
+@keyframes fiDrift2 {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  100% { transform: translate(-25px, 20px) rotate(-10deg); }
+}
+
+@keyframes fiDrift3 {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  100% { transform: translate(20px, 30px) rotate(8deg); }
+}
+
+@keyframes fiDrift4 {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  100% { transform: translate(-30px, -20px) rotate(-12deg); }
+}
+
+@keyframes fiDrift5 {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  100% { transform: translate(15px, -30px) rotate(15deg); }
+}
+
+/* ---- Hide on mobile ---- */
+@media (max-width: 768px) {
+  .floating-icons-layer {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fi {
+    animation: none;
+  }
+}

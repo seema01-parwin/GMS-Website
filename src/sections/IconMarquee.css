@@ -1,0 +1,129 @@
+.icon-marquee-section {
+  background: var(--navbar-bgg);
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+.icon-marquee-container {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.icon-marquee-header {
+  text-align: center;
+  margin-bottom: 36px;
+}
+
+.icon-marquee-title {
+  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+  font-weight: 800;
+  font-size: clamp(2rem, 4vw, 3rem);
+  letter-spacing: -0.01em;
+  color: var(--text);
+  margin: 0;
+}
+
+.pay-marquee {
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--navbar-bgg);
+  padding: 24px 0;
+}
+
+.pay-marquee__track {
+  display: flex;
+  width: max-content;
+  animation: marqueeScroll 35s linear infinite;
+}
+
+.pay-marquee:hover .pay-marquee__track {
+  animation-play-state: paused;
+}
+
+.pay-marquee__set {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  flex-shrink: 0;
+}
+
+.pay-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-width: 130px;
+  padding: 20px 24px;
+  border-right: 1px solid var(--border);
+  color: var(--text-secondary);
+  transition: color 0.3s ease, background 0.3s ease;
+  cursor: default;
+  flex-shrink: 0;
+}
+
+.pay-logo:last-child {
+  border-right: none;
+}
+
+.pay-logo svg {
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.pay-logo span {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.pay-logo:hover {
+  color: var(--accentbtn);
+  background: var(--accent-bg);
+}
+
+.pay-logo:hover svg {
+  transform: scale(1.15);
+  color: var(--accentbtn);
+}
+
+@keyframes marqueeScroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@media (max-width: 768px) {
+  .icon-marquee-section {
+    padding: 48px 20px;
+  }
+
+  .pay-logo {
+    min-width: 100px;
+    padding: 16px 18px;
+    gap: 8px;
+  }
+
+  .pay-logo svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .pay-logo span {
+    font-size: 10px;
+  }
+}
+
+body.dark-mode .pay-marquee {
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+body.dark-mode .pay-logo {
+  border-right-color: rgba(255, 255, 255, 0.08);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pay-marquee__track {
+    animation: none !important;
+  }
+}

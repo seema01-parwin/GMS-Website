@@ -1,0 +1,111 @@
+.nf-section {
+  min-height: calc(100vh - 140px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 24px;
+  background: var(--bg);
+  overflow: hidden;
+}
+
+.nf-inner {
+  max-width: 720px;
+  width: 100%;
+}
+
+.nf-content {
+  text-align: center;
+  position: relative;
+}
+
+.nf-code {
+  display: block;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 800;
+  font-size: clamp(6rem, 18vw, 11rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  background: linear-gradient(90deg, var(--accent), var(--accentbtn));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 8px;
+}
+
+.nf-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin-bottom: 16px;
+}
+
+.nf-eyebrow-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.nf-title {
+  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+  font-weight: 800;
+  font-size: clamp(1.9rem, 4.5vw, 3rem);
+  line-height: 1.15;
+  color: var(--text);
+  margin-bottom: 18px;
+}
+
+.nf-accent {
+  background: linear-gradient(90deg, var(--accent), var(--accentbtn));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.nf-sub {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  max-width: 480px;
+  margin: 0 auto 32px;
+}
+
+.nf-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 26px;
+  margin-top: 6px;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  background: var(--accentbtn);
+  color: var(--bgg);
+  border: 1px solid var(--accentbtn);
+  border-radius: 6px;
+  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.nf-btn:hover {
+  background: var(--accentbtnhovr);
+  border-color: var(--accentbtnhovr);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(4, 140, 182, 0.25);
+}
+
+.nf-btn svg {
+  transition: transform 0.25s ease;
+}
+
+.nf-btn:hover svg {
+  transform: translateX(-3px);
+}

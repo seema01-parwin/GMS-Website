@@ -1,0 +1,344 @@
+/* =========================
+   PLATFORM FEATURES — unique hero-card carousel
+   ========================= */
+
+.pf-section {
+    padding: 80px 4rem;
+    background: var(--navbar-bgg);
+}
+
+.pf-container {
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+/* ---- Header ---- */
+.pf-header {
+    text-align: center;
+    margin-bottom: 48px;
+}
+
+.pf-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .1em;
+    color: var(--accentbtn);
+    background: var(--accent-bg);
+    border: 1px solid rgba(56,189,248,0.3);
+    padding: 6px 14px;
+    margin-bottom: 22px;
+}
+
+.pf-title {
+    font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+    font-weight: 800;
+    font-size: clamp(2rem, 4vw, 3rem);
+    letter-spacing: -0.01em;
+    color: var(--text);
+    margin: 14px 0 0;
+}
+
+.pf-accent {
+    color: var(--accentbtn);
+}
+
+/* ---- Hero card ---- */
+.pf-hero {
+    border: 1px solid var(--border);
+    background: var(--card-bg);
+    overflow: hidden;
+}
+
+.pf-hero-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 400px;
+}
+
+/* Image side */
+.pf-hero-image-side {
+    position: relative;
+    overflow: hidden;
+    height: 400px;
+}
+
+.pf-hero-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.pf-hero-img-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(0,0,0,0.55) 0%, transparent 60%);
+    pointer-events: none;
+}
+
+.pf-hero-img-label {
+    position: absolute;
+    top: 24px;
+    left: 24px;
+    font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+    font-weight: 800;
+    font-size: 64px;
+    line-height: 1;
+    color: rgba(255, 255, 255, 0.12);
+    pointer-events: none;
+}
+
+/* Content side */
+.pf-hero-content {
+    padding: 40px 36px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow-y: auto;
+}
+
+.pf-hero-text {
+    position: relative;
+}
+
+.pf-hero-head {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 18px;
+}
+
+.pf-hero-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border: 1px solid rgba(4, 140, 182, 0.3);
+    background: rgba(4, 140, 182, 0.08);
+    color: var(--accentbtn);
+    flex-shrink: 0;
+}
+
+.pf-hero-tag {
+    font-family: 'JetBrains Mono', 'Inter', monospace;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border: 1px solid rgba(4, 140, 182, 0.25);
+    background: rgba(4, 140, 182, 0.06);
+    color: var(--accentbtn);
+}
+
+.pf-hero-title {
+    font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+    font-weight: 800;
+    font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+    color: var(--text);
+    margin: 0 0 12px;
+}
+
+.pf-hero-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    margin: 0 0 28px;
+}
+
+.pf-hero-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.pf-hero-list-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: var(--text);
+}
+
+.pf-hero-bullet {
+    width: 6px;
+    height: 6px;
+    background: var(--accentbtn);
+    flex-shrink: 0;
+}
+
+/* ---- Bottom bar ---- */
+.pf-hero-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 16px 28px;
+    border-top: 1px solid var(--border);
+}
+
+.pf-bottom-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    flex: 1;
+}
+
+.pf-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all .25s;
+    flex-shrink: 0;
+}
+
+.pf-arrow:hover {
+    border-color: var(--accentbtn);
+    color: var(--accentbtn);
+    background: rgba(4, 140, 182, 0.06);
+}
+
+/* Timeline dots + lines */
+.pf-timeline {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    gap: 0;
+}
+
+.pf-timeline-seg {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+.pf-timeline-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 2px solid var(--border);
+    background: var(--card-bg);
+    flex-shrink: 0;
+    transition: all .3s;
+}
+
+.pf-timeline-seg--active .pf-timeline-dot {
+    border-color: var(--accentbtn);
+    background: var(--accentbtn);
+    box-shadow: 0 0 12px rgba(4, 140, 182, 0.4);
+}
+
+.pf-timeline-seg--done .pf-timeline-dot {
+    border-color: var(--accentbtn);
+    background: rgba(4, 140, 182, 0.3);
+}
+
+.pf-timeline-line {
+    flex: 1;
+    height: 2px;
+    background: var(--border);
+    transition: background .3s;
+}
+
+.pf-timeline-seg--done .pf-timeline-line {
+    background: var(--accentbtn);
+}
+
+.pf-counter {
+    font-family: 'JetBrains Mono', 'Inter', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+/* ---- Progress bar ---- */
+.pf-progress-track {
+    height: 3px;
+    background: var(--border);
+}
+
+.pf-progress-fill {
+    height: 100%;
+    background: var(--accentbtn);
+    animation: pfFill 5s linear forwards;
+}
+
+@keyframes pfFill {
+    from { width: 0%; }
+    to   { width: 100%; }
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 900px) {
+    .pf-section {
+        padding: 60px 20px;
+    }
+
+    .pf-hero-inner {
+        grid-template-columns: 1fr;
+        height: auto;
+    }
+
+    .pf-hero-image-side {
+        height: 220px;
+    }
+
+    .pf-hero-content {
+        padding: 28px 24px;
+    }
+
+    .pf-hero-img-label {
+        font-size: 48px;
+    }
+}
+
+@media (max-width: 520px) {
+    .pf-hero-bottom {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+    }
+
+    .pf-bottom-center {
+        order: 3;
+        width: 100%;
+    }
+}
+
+/* ---- Dark mode ---- */
+body.dark-mode .pf-hero {
+    border-color: rgba(255, 255, 255, 0.08);
+}
+
+/* ---- Reduced motion ---- */
+@media (prefers-reduced-motion: reduce) {
+    .pf-progress-fill {
+        animation: none;
+        width: 100%;
+    }
+}
