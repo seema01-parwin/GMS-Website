@@ -1,0 +1,1344 @@
+/* ============================================
+   GRAPHIC DESIGN PAGE
+   ============================================ */
+
+/* ---- Shared ---- */
+.gd-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Poppins', 'Poppins', monospace;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accentbtn);
+  background: var(--accent-bg);
+  border: 1px solid rgba(4, 140, 182, 0.25);
+  padding: 5px 14px;
+  clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+}
+
+.gd-eyebrow-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accentbtn);
+}
+
+.gd-hero-accent {
+  background: linear-gradient(90deg, var(--accentbtn), var(--accent));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ============================================
+   HERO — studio visual left, copy right
+   ============================================ */
+.gd-hero {
+  position: relative;
+  background: var(--bg);
+  padding: 70px 4rem 88px;
+  overflow: hidden;
+}
+
+.gd-hero::before {
+  content: "";
+  position: absolute;
+  top: -180px;
+  right: -140px;
+  width: 520px;
+  height: 520px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(4, 140, 182, 0.09), transparent 70%);
+  pointer-events: none;
+}
+
+.gd-hero-inner {
+  position: relative;
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: 72px;
+  align-items: center;
+}
+
+/* ---- title: masked line reveal ---- */
+.gd-hero-title {
+  font-family: 'Poppins', 'Poppins', sans-serif;
+  font-weight: 800;
+  font-size: clamp(2.6rem, 5vw, 3.8rem);
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  margin: 20px 0 0;
+}
+
+.gd-hero-line {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.06em;
+}
+
+.gd-hero-line-in {
+  display: inline-block;
+  position: relative;
+  will-change: transform;
+}
+
+/* hand-drawn underline that draws itself */
+.gd-hero-underline {
+  position: absolute;
+  left: 0;
+  bottom: -0.06em;
+  width: 100%;
+  height: 0.28em;
+  color: var(--accentbtn);
+  opacity: 0.9;
+  pointer-events: none;
+}
+
+.gd-hero-sub {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  margin: 22px 0 28px;
+  max-width: 520px;
+}
+
+.gd-hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.gd-hero-text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Poppins', monospace;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--accentbtn);
+  transition: gap 0.2s;
+}
+
+.gd-hero-text-link:hover {
+  gap: 10px;
+}
+
+/* trust points */
+.gd-hero-points {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 22px;
+  margin: 30px 0 0;
+  padding: 0;
+}
+
+.gd-hero-points li {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.gd-hero-points svg {
+  color: var(--accentbtn);
+  flex-shrink: 0;
+}
+
+/* ---- left: studio stage ---- */
+.gd-hero-visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gd-hero-stage {
+  position: relative;
+  width: 100%;
+  max-width: 540px;
+  padding: 26px;
+}
+
+/* soft glow behind the shot */
+.gd-hero-blob {
+  position: absolute;
+  inset: -8% -10%;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 40% 40%,
+    rgba(4, 140, 182, 0.16),
+    transparent 68%
+  );
+  filter: blur(14px);
+  animation: gdBlob 9s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes gdBlob {
+  0%,
+  100% {
+    transform: scale(1) translate(0, 0);
+    opacity: 0.85;
+  }
+  50% {
+    transform: scale(1.08) translate(2%, -2%);
+    opacity: 1;
+  }
+}
+
+/* dotted canvas grid */
+.gd-hero-dots {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(
+    rgba(4, 140, 182, 0.28) 1.2px,
+    transparent 1.2px
+  );
+  background-size: 22px 22px;
+  mask-image: radial-gradient(circle at 50% 50%, black, transparent 78%);
+  -webkit-mask-image: radial-gradient(circle at 50% 50%, black, transparent 78%);
+  pointer-events: none;
+}
+
+/* the shot + crop marks */
+.gd-shot {
+  position: relative;
+  aspect-ratio: 4 / 3.4;
+  border: 1px solid var(--border);
+  background: var(--card-bg);
+  padding: 14px;
+  box-shadow: 0 30px 70px rgba(4, 140, 182, 0.14);
+}
+
+.gd-shot-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.gd-shot-wash {
+  position: absolute;
+  inset: 14px;
+  background: linear-gradient(
+    160deg,
+    rgba(4, 140, 182, 0.16),
+    transparent 45%,
+    rgba(4, 140, 182, 0.1)
+  );
+  pointer-events: none;
+}
+
+.gd-shot-corner {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  border: 2px solid var(--accentbtn);
+  opacity: 0.85;
+  animation: gdCorner 3.6s ease-in-out infinite;
+}
+
+.gd-shot-corner--tl {
+  top: -9px;
+  left: -9px;
+  border-right: 0;
+  border-bottom: 0;
+}
+
+.gd-shot-corner--tr {
+  top: -9px;
+  right: -9px;
+  border-left: 0;
+  border-bottom: 0;
+  animation-delay: 0.9s;
+}
+
+.gd-shot-corner--bl {
+  bottom: -9px;
+  left: -9px;
+  border-right: 0;
+  border-top: 0;
+  animation-delay: 1.8s;
+}
+
+.gd-shot-corner--br {
+  bottom: -9px;
+  right: -9px;
+  border-left: 0;
+  border-top: 0;
+  animation-delay: 2.7s;
+}
+
+@keyframes gdCorner {
+  0%,
+  70%,
+  100% {
+    opacity: 0.85;
+    transform: scale(1);
+  }
+  35% {
+    opacity: 0.35;
+    transform: scale(0.82);
+  }
+}
+
+/* ---- floating cards ---- */
+.gd-float {
+  position: absolute;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  background: var(--card-bg);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.14);
+}
+
+.gd-float--palette {
+  left: -6px;
+  bottom: 56px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  animation: gdFloatA 6.5s ease-in-out infinite;
+}
+
+.gd-float--type {
+  right: -8px;
+  top: 44px;
+  animation: gdFloatB 7.5s ease-in-out infinite;
+}
+
+.gd-float--badge {
+  right: 26px;
+  bottom: -4px;
+  border-color: rgba(4, 140, 182, 0.35);
+  font-family: 'Poppins', 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 0.8rem;
+  color: var(--text);
+  animation: gdFloatA 8s ease-in-out infinite 0.6s;
+}
+
+.gd-float--badge svg {
+  color: var(--accentbtn);
+}
+
+@keyframes gdFloatA {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes gdFloatB {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(9px);
+  }
+}
+
+.gd-float-label {
+  font-family: 'Poppins', sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+.gd-palette {
+  display: flex;
+  gap: 5px;
+}
+
+.gd-dot {
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.gd-dot--1 { background: var(--accentbtn); }
+.gd-dot--2 { background: var(--accent); }
+.gd-dot--3 { background: #f59e0b; }
+.gd-dot--4 { background: #8b5cf6; }
+.gd-dot--5 { background: #ef4444; }
+
+.gd-type-aa {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800;
+  font-size: 1.4rem;
+  line-height: 1;
+  color: var(--accentbtn);
+}
+
+.gd-type-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.gd-type-meta strong {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.gd-type-meta em {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.6rem;
+  font-style: normal;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+/* pen cursor wanders over the shot */
+.gd-cursor {
+  position: absolute;
+  z-index: 4;
+  left: 30%;
+  top: 52%;
+  width: 16px;
+  height: 18px;
+  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.3));
+  animation: gdCursor 5.6s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.gd-cursor svg {
+  width: 100%;
+  height: 100%;
+}
+
+@keyframes gdCursor {
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  25% {
+    transform: translate(58px, -34px) rotate(-6deg);
+  }
+  55% {
+    transform: translate(118px, 16px) rotate(4deg);
+  }
+  80% {
+    transform: translate(44px, 42px) rotate(-3deg);
+  }
+}
+
+/* ============================================
+   TAG MARQUEE
+   ============================================ */
+.gd-marquee {
+  overflow: hidden;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  background: var(--navbar-bgg);
+  padding: 18px 0;
+  mask-image: linear-gradient(90deg, transparent, black 6%, black 94%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, black 6%, black 94%, transparent);
+}
+
+.gd-marquee-track {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  width: max-content;
+  animation: gdMarquee 32s linear infinite;
+}
+
+.gd-marquee-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 40px;
+  font-family: 'Poppins', monospace;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+.gd-marquee-star {
+  font-size: 7px;
+  color: var(--accentbtn);
+}
+
+@keyframes gdMarquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* ============================================
+   RESULTS
+   ============================================ */
+.gd-results {
+  background: var(--bg);
+  padding: 56px 4rem;
+}
+
+.gd-results-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border: 1px solid var(--border);
+  background: var(--card-bg);
+}
+
+.gd-result {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 32px 24px;
+  text-align: center;
+  border-right: 1px solid var(--border);
+  transition: background 0.3s;
+}
+
+.gd-result:last-child {
+  border-right: none;
+}
+
+.gd-result:hover {
+  background: var(--accent-bg);
+}
+
+.gd-result-num {
+  font-family: 'Poppins', 'Poppins', monospace;
+  font-weight: 800;
+  font-size: 1.8rem;
+  letter-spacing: -0.01em;
+  background: linear-gradient(135deg, var(--accentbtn), var(--accent));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.gd-result-label {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+}
+
+/* ============================================
+   CAPABILITIES
+   ============================================ */
+.gd-capabilities {
+  background: var(--bg);
+  padding: 80px 4rem;
+}
+
+.gd-cap-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.gd-cap-header {
+  text-align: center;
+  margin-bottom: 56px;
+}
+
+.gd-cap-title {
+  font-family: 'Poppins', 'Poppins', sans-serif;
+  font-weight: 800;
+  font-size: clamp(2rem, 4vw, 3rem);
+  letter-spacing: -0.01em;
+  color: var(--text);
+  margin: 16px 0 0;
+  line-height: 1.15;
+}
+
+.gd-cap-sub {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin: 16px auto 0;
+  max-width: 600px;
+}
+
+.gd-cap-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.gd-cap-card {
+  position: relative;
+  border: 1px solid var(--border);
+  background: var(--card-bg);
+  padding: 36px 28px;
+  transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+.gd-cap-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accentbtn), var(--accent) 55%, transparent);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.gd-cap-card:hover {
+  border-color: rgba(4, 140, 182, 0.35);
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(4, 140, 182, 0.1);
+}
+
+.gd-cap-card:hover::before {
+  opacity: 1;
+}
+
+.gd-cap-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border: 1px solid rgba(4, 140, 182, 0.2);
+  background: rgba(4, 140, 182, 0.06);
+  color: var(--accentbtn);
+  margin-bottom: 20px;
+  transition: transform 0.3s, background 0.3s;
+}
+
+.gd-cap-card:hover .gd-cap-icon {
+  transform: rotate(-6deg);
+  background: rgba(4, 140, 182, 0.12);
+}
+
+.gd-cap-card-title {
+  font-family: 'Poppins', 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--text);
+  margin: 0 0 12px;
+}
+
+.gd-cap-card-desc {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.88rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* ============================================
+   PROCESS — DESIGN RULER ROADMAP
+   ============================================ */
+.gd-process {
+  background: var(--navbar-bgg);
+  padding: 80px 4rem;
+}
+
+.gd-process-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.gd-process-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.gd-process-title {
+  font-family: 'Poppins', 'Poppins', sans-serif;
+  font-weight: 800;
+  font-size: clamp(2rem, 4vw, 3rem);
+  letter-spacing: -0.01em;
+  color: var(--text);
+  margin: 16px 0 0;
+  line-height: 1.15;
+}
+
+.gd-process-sub {
+  max-width: 620px;
+  margin: 14px auto 0;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.75;
+  color: var(--text-secondary);
+}
+
+/* ---- the ruler ---- */
+.gd-ruler {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: minmax(560px, auto);
+}
+
+.gd-ruler-track {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.gd-ruler-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(50% - 1px);
+  height: 2px;
+  background: var(--border);
+}
+
+/* ruler tick marks under the line */
+.gd-ruler-ticks {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(50% + 3px);
+  height: 9px;
+  opacity: 0.75;
+  background-image:
+    repeating-linear-gradient(90deg, var(--text-secondary) 0 1px, transparent 1px 50px),
+    repeating-linear-gradient(90deg, var(--border) 0 1px, transparent 1px 10px);
+  background-size: 100% 9px, 100% 5px;
+  background-repeat: no-repeat;
+}
+
+/* scroll-driven palette fill */
+.gd-ruler-fill {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(50% - 1.5px);
+  height: 3px;
+  transform-origin: left center;
+  background: linear-gradient(90deg, var(--accentbtn), var(--accent));
+  box-shadow: 0 0 14px rgba(4, 140, 182, 0.45);
+}
+
+/* start / end caps */
+.gd-ruler-cap {
+  position: absolute;
+  top: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--card-bg);
+  border: 1.5px solid rgba(4, 140, 182, 0.45);
+  color: var(--accentbtn);
+  box-shadow: 0 0 0 5px var(--navbar-bgg);
+}
+
+.gd-ruler-cap--start {
+  left: -4px;
+  transform: translateY(-50%);
+}
+
+.gd-ruler-cap--end {
+  right: -4px;
+  transform: translateY(-50%);
+}
+
+/* ---- one checkpoint ---- */
+.gd-check {
+  position: relative;
+  z-index: 1;
+}
+
+.gd-check-pin {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gd-check-pin-halo {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 2px solid rgba(4, 140, 182, 0.55);
+  animation: gdPinPulse 2.6s ease-out infinite;
+  animation-delay: calc(var(--i) * 0.45s);
+}
+
+@keyframes gdPinPulse {
+  0% {
+    transform: scale(0.85);
+    opacity: 0.9;
+  }
+  70%,
+  100% {
+    transform: scale(1.55);
+    opacity: 0;
+  }
+}
+
+.gd-check-pin-core {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--card-bg);
+  border: 2px solid var(--accentbtn);
+  color: var(--accentbtn);
+  box-shadow: 0 0 0 6px var(--navbar-bgg);
+}
+
+/* dashed stem from the ruler to the card */
+.gd-check-stem {
+  position: absolute;
+  left: 50%;
+  width: 0;
+  z-index: 1;
+  border-left: 2px dashed rgba(4, 140, 182, 0.55);
+}
+
+.gd-check--up .gd-check-stem {
+  bottom: 50%;
+  height: 46px;
+  transform-origin: bottom;
+}
+
+.gd-check--down .gd-check-stem {
+  top: 50%;
+  height: 46px;
+  transform-origin: top;
+}
+
+/* spec card */
+.gd-check-card {
+  position: absolute;
+  z-index: 2;
+  width: 236px;
+  margin-left: -118px;
+  left: 50%;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  padding: 18px 16px 16px;
+  box-shadow: 0 16px 38px rgba(0, 0, 0, 0.1);
+  transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+.gd-check-card:hover {
+  border-color: rgba(4, 140, 182, 0.4);
+  transform: translateY(-5px);
+  box-shadow: 0 22px 48px rgba(4, 140, 182, 0.16);
+}
+
+.gd-check--up .gd-check-card {
+  bottom: calc(50% + 46px);
+}
+
+.gd-check--down .gd-check-card {
+  top: calc(50% + 46px);
+}
+
+/* keep edge cards inside the container */
+.gd-check--first .gd-check-card {
+  left: 0;
+  margin-left: 0;
+}
+
+.gd-check--last .gd-check-card {
+  left: auto;
+  right: 0;
+  margin-left: 0;
+}
+
+/* file-name tab */
+.gd-check-tab {
+  position: absolute;
+  top: -11px;
+  left: 14px;
+  padding: 2px 9px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 8.5px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #fff;
+  background: linear-gradient(90deg, var(--accentbtn), var(--accent));
+}
+
+.gd-check-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.gd-check-num {
+  font-family: 'Poppins', 'Poppins', sans-serif;
+  font-weight: 800;
+  font-size: 1.55rem;
+  line-height: 1;
+  color: rgba(4, 140, 182, 0.28);
+}
+
+body.dark-mode .gd-check-num {
+  color: rgba(56, 189, 248, 0.3);
+}
+
+.gd-check-time {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accentbtn);
+  background: rgba(4, 140, 182, 0.08);
+  border: 1px solid rgba(4, 140, 182, 0.35);
+  padding: 3px 7px;
+}
+
+.gd-check-title {
+  font-family: 'Poppins', 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--text);
+  margin: 0 0 7px;
+}
+
+.gd-check-desc {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.82rem;
+  line-height: 1.65;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.gd-check-out {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 11px;
+  padding-top: 10px;
+  border-top: 1px dashed var(--border);
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--accentbtn);
+}
+
+.gd-check-out svg {
+  flex-shrink: 0;
+}
+
+/* ============================================
+   DELIVERABLES
+   ============================================ */
+.gd-deliverables {
+  background: var(--bg);
+  padding: 80px 4rem;
+}
+
+.gd-deliverables-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.gd-deliverables-header {
+  text-align: center;
+  margin-bottom: 52px;
+}
+
+.gd-deliverables-title {
+  font-family: 'Poppins', 'Poppins', sans-serif;
+  font-weight: 800;
+  font-size: clamp(2rem, 4vw, 3rem);
+  letter-spacing: -0.01em;
+  color: var(--text);
+  margin: 16px 0 0;
+  line-height: 1.15;
+}
+
+.gd-deliverables-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.gd-deliverable {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 26px 22px;
+  border: 1px solid var(--border);
+  background: var(--card-bg);
+  transition: border-color 0.3s, transform 0.3s;
+}
+
+.gd-deliverable:hover {
+  border-color: rgba(4, 140, 182, 0.4);
+  transform: translateY(-4px);
+}
+
+.gd-deliverable-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border: 1px solid rgba(4, 140, 182, 0.25);
+  background: rgba(4, 140, 182, 0.06);
+  color: var(--accentbtn);
+}
+
+.gd-deliverable-name {
+  font-family: 'Poppins', 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 0.98rem;
+  color: var(--text);
+}
+
+.gd-deliverable-desc {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.82rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 1024px) {
+  .gd-hero,
+  .gd-results,
+  .gd-capabilities,
+  .gd-process,
+  .gd-deliverables {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+@media (max-width: 900px) {
+  .gd-hero {
+    padding: 120px 20px 64px;
+  }
+
+  .gd-hero-inner {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .gd-hero-stage {
+    max-width: 460px;
+    margin: 0 auto;
+  }
+
+  .gd-results-inner {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .gd-result:nth-child(2) {
+    border-right: none;
+  }
+
+  .gd-result:nth-child(1),
+  .gd-result:nth-child(2) {
+    border-bottom: 1px solid var(--border);
+  }
+
+  .gd-cap-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* ---- ruler roadmap: collapse to a vertical rail ---- */
+  .gd-ruler {
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+    padding-left: 72px;
+    grid-template-rows: none;
+  }
+
+  .gd-ruler-track {
+    left: 0;
+    right: auto;
+    top: 0;
+    bottom: 0;
+    width: 72px;
+  }
+
+  .gd-ruler-line {
+    left: 27px;
+    right: auto;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    height: auto;
+  }
+
+  .gd-ruler-ticks {
+    left: 31px;
+    right: auto;
+    top: 0;
+    bottom: 0;
+    width: 9px;
+    height: auto;
+    background-image:
+      repeating-linear-gradient(180deg, var(--text-secondary) 0 1px, transparent 1px 50px),
+      repeating-linear-gradient(180deg, var(--border) 0 1px, transparent 1px 10px);
+    background-size: 9px 100%, 5px 100%;
+  }
+
+  .gd-ruler-fill {
+    display: none;
+  }
+
+  .gd-ruler-fill--v {
+    display: block;
+    left: 26px;
+    right: auto;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    height: auto;
+    transform-origin: top center;
+    background: linear-gradient(180deg, var(--accentbtn), var(--accent));
+  }
+
+  .gd-ruler-cap {
+    left: 28px;
+    right: auto;
+    transform: translate(-50%, -50%);
+  }
+
+  .gd-ruler-cap--start {
+    top: 0;
+  }
+
+  .gd-ruler-cap--end {
+    top: auto;
+    bottom: 0;
+  }
+
+  .gd-check {
+    position: relative;
+  }
+
+  .gd-check-pin {
+    left: -44px;
+    top: 24px;
+    transform: translate(-50%, -50%);
+  }
+
+  .gd-check-stem {
+    left: -22px;
+    right: auto;
+    top: 24px;
+    bottom: auto;
+    width: 22px;
+    height: 0;
+    border-left: 0;
+    border-top: 2px dashed rgba(4, 140, 182, 0.55);
+    transform-origin: left center;
+  }
+
+  .gd-check--up .gd-check-stem,
+  .gd-check--down .gd-check-stem {
+    left: -22px;
+    top: 24px;
+    bottom: auto;
+    width: 22px;
+    height: 0;
+    border-left: 0;
+    border-top: 2px dashed rgba(4, 140, 182, 0.55);
+  }
+
+  .gd-check--up .gd-check-card,
+  .gd-check--down .gd-check-card,
+  .gd-check--first .gd-check-card,
+  .gd-check--last .gd-check-card {
+    position: static;
+    left: auto;
+    right: auto;
+    top: auto;
+    bottom: auto;
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .gd-deliverables-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .gd-hero {
+    padding: 108px 20px 56px;
+  }
+
+  .gd-hero-title {
+    font-size: 2.3rem;
+  }
+
+  .gd-hero-stage {
+    padding: 18px;
+  }
+
+  .gd-float--palette {
+    left: 2px;
+    bottom: 40px;
+    padding: 8px 11px;
+  }
+
+  .gd-float--type {
+    right: 2px;
+    top: 30px;
+    padding: 8px 11px;
+  }
+
+  .gd-float--badge {
+    right: 16px;
+    bottom: -6px;
+    padding: 9px 13px;
+  }
+
+  .gd-dot {
+    width: 14px;
+    height: 14px;
+  }
+
+  .gd-hero-points {
+    gap: 8px 16px;
+  }
+
+  .gd-results-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .gd-result {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .gd-result:nth-child(1),
+  .gd-result:nth-child(2) {
+    border-bottom: 1px solid var(--border);
+  }
+
+  .gd-result:last-child {
+    border-bottom: none;
+  }
+
+  .gd-cap-grid,
+  .gd-deliverables-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gd-ruler {
+    padding-left: 60px;
+    gap: 20px;
+  }
+
+  .gd-ruler-track {
+    width: 60px;
+  }
+
+  .gd-ruler-line {
+    left: 21px;
+  }
+
+  .gd-ruler-ticks {
+    left: 25px;
+    width: 8px;
+    background-size: 8px 100%, 5px 100%;
+  }
+
+  .gd-ruler-fill--v {
+    left: 20px;
+  }
+
+  .gd-ruler-cap {
+    left: 22px;
+  }
+
+  .gd-check-pin {
+    left: -38px;
+    width: 40px;
+    height: 40px;
+  }
+
+  .gd-check-pin-core {
+    width: 40px;
+    height: 40px;
+  }
+
+  .gd-check-stem,
+  .gd-check--up .gd-check-stem,
+  .gd-check--down .gd-check-stem {
+    left: -19px;
+    width: 19px;
+  }
+
+  .gd-check-card {
+    padding: 16px 14px 14px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gd-marquee-track {
+    animation: none;
+  }
+
+  .gd-cursor,
+  .gd-hero-blob,
+  .gd-shot-corner,
+  .gd-float--palette,
+  .gd-float--type,
+  .gd-float--badge {
+    animation: none;
+  }
+
+  .gd-cap-card,
+  .gd-check-card,
+  .gd-check-pin-halo,
+  .gd-check-stem,
+  .gd-deliverable {
+    transition: none;
+    animation: none;
+    transform: none;
+  }
+}

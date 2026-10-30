@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { motion } from "motion/react";
 import { ArrowRight, Check } from "lucide-react";
 import { SERVICES } from "../data/constants";
+import { hoverScale, pressable } from "../utils/animations";
 import "./Services.css";
 
 const Services = () => {
@@ -42,6 +43,7 @@ const Services = () => {
             >
               <motion.div
                 className="service-row-visual"
+                {...hoverScale}
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.6, delay: 0.1 }}
@@ -58,7 +60,7 @@ const Services = () => {
                   transition={{ duration: 0.4, delay: 0.15 }}
                   viewport={{ amount: 0.5 }}
                 >
-                  0{active + 1}
+                  {String(active + 1).padStart(2, "0")}
                 </motion.span>
                 <motion.h3
                   className="service-row-title"
@@ -97,6 +99,7 @@ const Services = () => {
                 <motion.a
                   href={data.link}
                   className="hero-btn primary service-row-btn"
+                  {...hoverScale}
                   initial={{ opacity: 0, y: 10 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.4, delay: 0.55 }}
@@ -115,25 +118,27 @@ const Services = () => {
             transition={{ duration: 0.5, delay: 0.3 }}
             viewport={{ amount: 0.5 }}
           >
-            <button type="button" className="services-nav-btn services-nav-prev" onClick={goPrev} aria-label="Previous service">
+            <motion.button type="button" className="services-nav-btn services-nav-prev" onClick={goPrev} aria-label="Previous service" {...hoverScale}>
               <ArrowRight size={18} style={{ transform: "rotate(180deg)" }} />
-            </button>
+            </motion.button>
 
             <div className="services-dots">
               {SERVICES.map((s, i) => (
-                <button
+                <motion.button
                   type="button"
                   key={s.key}
                   className={`services-dot${i === active ? " active" : ""}`}
                   onClick={() => goTo(i)}
                   aria-label={`Go to ${s.label}`}
+                  {...pressable}
+                  whileHover={{ scale: 1.4, transition: { type: "spring", stiffness: 400, damping: 18 } }}
                 />
               ))}
             </div>
 
-            <button type="button" className="services-nav-btn services-nav-next" onClick={goNext} aria-label="Next service">
+            <motion.button type="button" className="services-nav-btn services-nav-next" onClick={goNext} aria-label="Next service" {...hoverScale}>
               <ArrowRight size={18} />
-            </button>
+            </motion.button>
           </motion.div>
         </div>
       </div>

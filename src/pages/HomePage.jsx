@@ -22,8 +22,8 @@ const HomePage = () => (
     <WhoWeAre />
     <Services />
     <Careers />
-    <PlatformFeatures />
     <ClientReviews />
+    <PlatformFeatures />
     <IconMarquee />
     <Faq />
     <CTA />

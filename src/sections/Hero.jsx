@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 // eslint-disable-next-line no-unused-vars -- motion is used via <motion.div> JSX member expressions
 import { motion, useScroll, useTransform } from "motion/react";
+import { hoverTag, hoverScale } from "../utils/animations";
 import globeImg from "../assets/globe-network1.png";
 import "./Hero.css";
 
@@ -58,6 +59,7 @@ const Hero = () => {
           >
             <motion.span
               className="feature-tag tag-orange"
+              {...hoverTag}
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.4, delay: 0.35 }}
@@ -65,6 +67,7 @@ const Hero = () => {
             >Infrastructure</motion.span>
             <motion.span
               className="feature-tag tag-green"
+              {...hoverTag}
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.4, delay: 0.43 }}
@@ -72,6 +75,7 @@ const Hero = () => {
             >Master Planning</motion.span>
             <motion.span
               className="feature-tag tag-pink"
+              {...hoverTag}
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.4, delay: 0.51 }}
@@ -87,6 +91,7 @@ const Hero = () => {
           >
             <motion.span
               className="feature-tag tag-purple"
+              {...hoverTag}
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.4, delay: 0.55 }}
@@ -94,6 +99,7 @@ const Hero = () => {
             >Interior Design</motion.span>
             <motion.span
               className="feature-tag tag-gray"
+              {...hoverTag}
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.4, delay: 0.63 }}
@@ -131,6 +137,7 @@ const Hero = () => {
 
           <motion.div
             className="data-chip chip-tl"
+            {...hoverScale}
             initial={{ opacity: 0, scale: 0 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.4, delay: 0.5, type: "spring", stiffness: 200 }}
@@ -140,6 +147,7 @@ const Hero = () => {
           </motion.div>
           <motion.div
             className="data-chip chip-tr"
+            {...hoverScale}
             initial={{ opacity: 0, scale: 0 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.4, delay: 0.62, type: "spring", stiffness: 200 }}
@@ -149,6 +157,7 @@ const Hero = () => {
           </motion.div>
           <motion.div
             className="data-chip chip-bl"
+            {...hoverScale}
             initial={{ opacity: 0, scale: 0 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.4, delay: 0.74, type: "spring", stiffness: 200 }}
@@ -158,6 +167,7 @@ const Hero = () => {
           </motion.div>
           <motion.div
             className="data-chip chip-br"
+            {...hoverScale}
             initial={{ opacity: 0, scale: 0 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.4, delay: 0.86, type: "spring", stiffness: 200 }}

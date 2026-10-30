@@ -1,0 +1,651 @@
+/* ============================================
+   MASTER PLANNING PAGE
+   ============================================ */
+
+/* ---- Shared ---- */
+.mp-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Poppins', 'Poppins', monospace;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accentbtn);
+  background: var(--accent-bg);
+  border: 1px solid rgba(4, 140, 182, 0.25);
+  padding: 5px 14px;
+  clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+}
+
+.mp-eyebrow-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accentbtn);
+}
+
+.mp-hero-accent {
+  background: linear-gradient(90deg, var(--accentbtn), var(--accent));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ============================================
+   HERO
+   ============================================ */
+.mp-hero {
+  background: var(--bg);
+  padding: 100px 4rem 80px;
+}
+
+.mp-hero-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+
+.mp-hero-title {
+  font-family: 'Poppins', 'Poppins', sans-serif;
+  font-weight: 800;
+  font-size: clamp(2.6rem, 5vw, 3.8rem);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  margin: 20px 0 0;
+}
+
+.mp-hero-sub {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  margin: 20px 0 28px;
+  max-width: 520px;
+}
+
+.mp-hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.mp-hero-text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Poppins', monospace;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--accentbtn);
+  transition: gap 0.2s;
+}
+
+.mp-hero-text-link:hover {
+  gap: 10px;
+}
+
+.mp-hero-visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Site-plan visual */
+.mp-hero-plan {
+  position: relative;
+  width: 100%;
+  max-width: 460px;
+  aspect-ratio: 4 / 3;
+  border: 1px solid var(--border);
+  background: var(--card-bg);
+  overflow: hidden;
+}
+
+.mp-plan-grid {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(var(--border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border) 1px, transparent 1px);
+  background-size: 24px 24px;
+  opacity: 0.5;
+  mask-image: radial-gradient(ellipse at center, black 0%, transparent 82%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 0%, transparent 82%);
+}
+
+.mp-plan-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.mp-plan-block {
+  position: absolute;
+  border: 1px solid rgba(4, 140, 182, 0.35);
+  background: rgba(4, 140, 182, 0.06);
+}
+
+.mp-plan-b1 {
+  top: 12%;
+  left: 10%;
+  width: 30%;
+  height: 24%;
+}
+
+.mp-plan-b2 {
+  top: 12%;
+  left: 52%;
+  width: 38%;
+  height: 24%;
+  background: rgba(4, 140, 182, 0.12);
+}
+
+.mp-plan-b3 {
+  top: 48%;
+  left: 10%;
+  width: 34%;
+  height: 34%;
+  background: rgba(4, 140, 182, 0.1);
+}
+
+.mp-plan-b4 {
+  top: 48%;
+  left: 56%;
+  width: 34%;
+  height: 34%;
+}
+
+.mp-plan-road {
+  position: absolute;
+  background: rgba(4, 140, 182, 0.25);
+}
+
+.mp-plan-road-h {
+  top: 40%;
+  left: 6%;
+  width: 88%;
+  height: 2px;
+}
+
+.mp-plan-road-v {
+  left: 46%;
+  top: 8%;
+  width: 2px;
+  height: 84%;
+}
+
+.mp-plan-marker {
+  position: absolute;
+  top: 40%;
+  left: 46%;
+  width: 14px;
+  height: 14px;
+  transform: translate(-50%, -50%);
+  border: 2px solid var(--accentbtn);
+  border-radius: 50%;
+}
+
+.mp-plan-marker span {
+  position: absolute;
+  inset: 3px;
+  border-radius: 50%;
+  background: var(--accentbtn);
+}
+
+.mp-plan-label {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  font-family: 'Poppins', monospace;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--text-secondary);
+  opacity: 0.65;
+}
+
+.mp-plan-scale {
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  font-family: 'Poppins', monospace;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--accentbtn);
+  opacity: 0.7;
+}
+
+.mp-plan-badge {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border: 1px solid rgba(4, 140, 182, 0.3);
+  background: rgba(4, 140, 182, 0.06);
+  color: var(--accentbtn);
+  font-family: 'Poppins', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+/* ============================================
+   RESULTS BAR
+   ============================================ */
+.mp-results {
+  background: var(--navbar-bgg);
+  padding: 0 4rem;
+}
+
+.mp-results-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border: 1px solid var(--border);
+  background: var(--card-bg);
+}
+
+.mp-result {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 32px 24px;
+  text-align: center;
+  border-right: 1px solid var(--border);
+  transition: background 0.3s;
+}
+
+.mp-result:last-child {
+  border-right: none;
+}
+
+.mp-result:hover {
+  background: var(--accent-bg);
+}
+
+.mp-result-num {
+  font-family: 'Poppins', 'Poppins', monospace;
+  font-weight: 800;
+  font-size: 1.8rem;
+  letter-spacing: -0.01em;
+  background: linear-gradient(135deg, var(--accentbtn), var(--accent));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.mp-result-label {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+}
+
+/* ============================================
+   CAPABILITIES
+   ============================================ */
+.mp-capabilities {
+  background: var(--bg);
+  padding: 80px 4rem;
+}
+
+.mp-cap-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.mp-cap-header {
+  text-align: center;
+  margin-bottom: 56px;
+}
+
+.mp-cap-title {
+  font-family: 'Poppins', 'Poppins', sans-serif;
+  font-weight: 800;
+  font-size: clamp(2rem, 4vw, 3rem);
+  letter-spacing: -0.01em;
+  color: var(--text);
+  margin: 16px 0 0;
+  line-height: 1.15;
+}
+
+.mp-cap-sub {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin: 16px auto 0;
+  max-width: 600px;
+}
+
+.mp-cap-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.mp-cap-card {
+  border: 1px solid var(--border);
+  background: var(--card-bg);
+  padding: 36px 28px;
+  transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+.mp-cap-card:hover {
+  border-color: rgba(4, 140, 182, 0.35);
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(4, 140, 182, 0.1);
+}
+
+.mp-cap-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border: 1px solid rgba(4, 140, 182, 0.2);
+  background: rgba(4, 140, 182, 0.06);
+  color: var(--accentbtn);
+  margin-bottom: 20px;
+}
+
+.mp-cap-card-title {
+  font-family: 'Poppins', 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--text);
+  margin: 0 0 12px;
+}
+
+.mp-cap-card-desc {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.88rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* ============================================
+   PROCESS
+   ============================================ */
+.mp-process {
+  background: var(--navbar-bgg);
+  padding: 80px 4rem;
+}
+
+.mp-process-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.mp-process-header {
+  text-align: center;
+  margin-bottom: 56px;
+}
+
+.mp-process-title {
+  font-family: 'Poppins', 'Poppins', sans-serif;
+  font-weight: 800;
+  font-size: clamp(2rem, 4vw, 3rem);
+  letter-spacing: -0.01em;
+  color: var(--text);
+  margin: 16px 0 0;
+  line-height: 1.15;
+}
+
+.mp-process-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.mp-process-card {
+  position: relative;
+  border: 1px solid var(--border);
+  background: var(--card-bg);
+  padding: 36px 28px;
+  transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+.mp-process-card:hover {
+  border-color: rgba(4, 140, 182, 0.35);
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(4, 140, 182, 0.1);
+}
+
+.mp-process-num {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  font-family: 'Poppins', monospace;
+  font-weight: 700;
+  font-size: 2.5rem;
+  line-height: 1;
+  color: rgba(4, 140, 182, 0.08);
+  pointer-events: none;
+}
+
+body.dark-mode .mp-process-num {
+  color: rgba(56, 189, 248, 0.1);
+}
+
+.mp-process-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(4, 140, 182, 0.2);
+  background: rgba(4, 140, 182, 0.06);
+  color: var(--accentbtn);
+  margin-bottom: 20px;
+}
+
+.mp-process-card-title {
+  font-family: 'Poppins', 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--text);
+  margin: 0 0 12px;
+}
+
+.mp-process-card-desc {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.88rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* ============================================
+   PROJECT TYPES
+   ============================================ */
+.mp-projects {
+  background: var(--bg);
+  padding: 80px 4rem;
+}
+
+.mp-projects-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.mp-projects-header {
+  text-align: center;
+  margin-bottom: 56px;
+}
+
+.mp-projects-title {
+  font-family: 'Poppins', 'Poppins', sans-serif;
+  font-weight: 800;
+  font-size: clamp(2rem, 4vw, 3rem);
+  letter-spacing: -0.01em;
+  color: var(--text);
+  margin: 16px 0 0;
+  line-height: 1.15;
+}
+
+.mp-projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.mp-project-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 28px 24px;
+  border: 1px solid var(--border);
+  background: var(--card-bg);
+  text-align: center;
+  transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+.mp-project-item:hover {
+  border-color: rgba(4, 140, 182, 0.35);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(4, 140, 182, 0.08);
+}
+
+.mp-project-name {
+  font-family: 'Poppins', 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--text);
+}
+
+.mp-project-type {
+  font-family: 'Poppins', monospace;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  background: var(--accent-bg);
+  border: 1px solid rgba(4, 140, 182, 0.2);
+  padding: 2px 10px;
+  align-self: center;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 1024px) {
+  .mp-hero,
+  .mp-capabilities,
+  .mp-process,
+  .mp-projects {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .mp-results {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+@media (max-width: 900px) {
+  .mp-hero {
+    padding: 80px 20px 60px;
+  }
+
+  .mp-hero-inner {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    text-align: center;
+  }
+
+  .mp-hero-sub {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .mp-hero-actions {
+    justify-content: center;
+  }
+
+  .mp-hero-visual {
+    order: -1;
+  }
+
+  .mp-hero-plan {
+    max-width: 360px;
+  }
+
+  .mp-results-inner {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .mp-result:nth-child(2) {
+    border-right: none;
+  }
+
+  .mp-result:nth-child(1),
+  .mp-result:nth-child(2) {
+    border-bottom: 1px solid var(--border);
+  }
+
+  .mp-cap-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .mp-process-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .mp-projects-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .mp-results-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .mp-result {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .mp-result:last-child {
+    border-bottom: none;
+  }
+
+  .mp-cap-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .mp-process-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .mp-projects-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mp-cap-card,
+  .mp-process-card,
+  .mp-project-item,
+  .mp-result,
+  .mp-hero-text-link {
+    transition: none;
+    transform: none;
+  }
+}

@@ -17,7 +17,7 @@
 
 /* ---- headline ---- */
 .hero-text h1 {
-  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+  font-family: 'Poppins', 'Poppins', sans-serif;
   font-weight: 800;
   font-size: clamp(3.4rem, 5.4vw, 4.6rem);
   line-height: 1.1;
@@ -43,7 +43,7 @@
 }
 
 .hero-sub {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 1.02rem;
   line-height: 1.7;
   color: var(--text-secondary);
@@ -65,7 +65,7 @@
 }
 
 .feature-tag {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Poppins', monospace;
   font-size: 10px;
   font-weight: 700;
   letter-spacing: .04em;
@@ -140,7 +140,7 @@ body.dark-mode .tag-pink   { color: #fbe1ff; background: rgba(240, 0, 208, 0.08)
   gap: 7px;
   background: var(--card-bg);
   border: 1px solid var(--border);
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Poppins', monospace;
   font-size: 11px;
   font-weight: 600;
   color: var(--text-secondary);
@@ -284,7 +284,7 @@ b.up { color: #16a34a; font-weight: 700; }
 }
 
 .globe-label-title {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-weight: 700;
   font-size: 1.5rem;
   letter-spacing: -0.01em;
@@ -293,7 +293,7 @@ b.up { color: #16a34a; font-weight: 700; }
 }
 
 .globe-label-sub {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Poppins', monospace;
   font-size: 11px;
   font-weight: 600;
   letter-spacing: .1em;

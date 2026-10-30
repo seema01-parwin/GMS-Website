@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 // eslint-disable-next-line no-unused-vars -- motion is used via <motion.div> JSX member expressions
 import { motion } from "motion/react";
 import {
@@ -8,13 +9,18 @@ import {
   ShieldCheck,
   Handshake,
   TrendingUp,
+  Users,
+  GraduationCap,
   ArrowUpRight,
   ChevronRight,
+  Hammer,
+  Layers,
+  Code2,
+  MapPin,
+  Building2,
+  Paintbrush,
+  Headset,
 } from "lucide-react";
-// import d1 from "../assets/d1.jpg";
-// import d2 from "../assets/d2.jpg";
-// import d3 from "../assets/d3.jpg";
-// import d4 from "../assets/d4.jpg";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import CTA from "../sections/CTA";
@@ -30,6 +36,11 @@ import analyticsImg from "../assets/services/analytics-reporting.jpg";
 import docImg from "../assets/services/document-management.jpg";
 import securityImg from "../assets/services/security-compliance.jpg";
 import supportImg from "../assets/services/dedicated-support.jpg";
+import partImg from "../assets/partner.png";
+import i1Img from "../assets/divisions/construction-infrastructure.jpg";
+import i2Img from "../assets/divisions/interior-design-planning.jpg";
+import i3Img from "../assets/divisions/software-platforms.jpg";
+import i4Img from "../assets/divisions/it-consulting-bpo.jpg";
 import "./AboutPage.css";
 
 const GALLERY_COL1 = [
@@ -52,24 +63,24 @@ const GALLERY_COL2 = [
 
 const LEADERSHIP = [
   {
-    name: "Sharon Darshan",
-    role: "Managing Director",
-    desc: "Driving GMS growth across infrastructure, design, and technology since its founding.",
+    name: "Krishanthan Keerthi",
+    role: "Director, Head of Retention · BPO",
+    desc: "Leading BPO retention strategy and long-term client relationships across GMS accounts.",
   },
   {
-    name: "Hasitha Mahesh",
-    role: "Director",
-    desc: "Overseeing strategic partnerships and client relations across all GMS divisions.",
+    name: "Sajeenthan Thurairaj",
+    role: "Director, HR Manager, IT Administrative",
+    desc: "Overseeing HR, people operations, and IT administration for the group.",
   },
   {
-    name: "Himasha Perera",
-    role: "Head of HR & Finance",
-    desc: "Building the team and financial foundation behind every successful GMS project.",
+    name: "Satheeshan Mahendran",
+    role: "Director, Head of Accounts",
+    desc: "Managing accounts, finance, and reporting across GMS operations.",
   },
   {
-    name: "Operations Lead",
-    role: "Head of Operations",
-    desc: "Ensuring seamless execution across projects, teams, and client deliverables.",
+    name: "Sudarshan Govindaraj",
+    role: "Director, Head of Sales · BPO",
+    desc: "Driving BPO sales, partnerships, and new business growth.",
   },
 ];
 
@@ -85,6 +96,93 @@ const BRANDS = [
     tagline: "Software & Platforms",
     desc: "Our software development subsidiary — building proprietary platforms, enterprise tools, and custom solutions that power client operations at scale.",
     icon: TrendingUp,
+  },
+];
+
+const VALUES = [
+  {
+    icon: ShieldCheck,
+    num: "01",
+    title: "Integrity",
+    desc: "We stay honest, transparent, and accountable in every project, partnership, and commitment we make.",
+  },
+  {
+    icon: Lightbulb,
+    num: "02",
+    title: "Innovation",
+    desc: "We combine modern technologies with creative thinking to solve real problems in new ways.",
+  },
+  {
+    icon: Users,
+    num: "03",
+    title: "Teamwork",
+    desc: "A collaborative culture where people grow together, share knowledge, and win together.",
+  },
+  {
+    icon: Target,
+    num: "04",
+    title: "Client-First",
+    desc: "We put our clients' goals first and build solutions that exceed expectations on every delivery.",
+  },
+  {
+    icon: GraduationCap,
+    num: "05",
+    title: "Continuous Learning",
+    desc: "We invest in training, skills, and professional growth at every level of the organisation.",
+  },
+];
+
+const DIFFERENTIATORS = [
+  {
+    icon: Hammer,
+    title: "End-to-End Delivery",
+    desc: "Strategy, design, construction, and technology handled in-house — no hand-offs between vendors.",
+  },
+  {
+    icon: Layers,
+    title: "One Roof, Many Services",
+    desc: "From infrastructure and real estate to software, marketing, and BPO under a single company.",
+  },
+  {
+    icon: Code2,
+    title: "In-House Technology",
+    desc: "GMS Tech builds the platforms, apps, and internal tools that run our own operations.",
+  },
+  {
+    icon: MapPin,
+    title: "Local and Reliable",
+    desc: "Based in Nugegoda, serving businesses and developers across Sri Lanka.",
+  },
+];
+
+const DIVISIONS = [
+  {
+    icon: Building2,
+    title: "Construction & Infrastructure",
+    desc: "Roads, buildings, and development works delivered by our own teams.",
+    href: "/infrastructure",
+    img: i1Img,
+  },
+  {
+    icon: Paintbrush,
+    title: "Interior Design & Planning",
+    desc: "Concept to handover — spaces planned, designed, and executed.",
+    href: "/interior-design",
+    img: i2Img,
+  },
+  {
+    icon: Code2,
+    title: "Software & Platforms",
+    desc: "Web, mobile, and enterprise systems built to scale with your business.",
+    href: "/software",
+    img: i3Img,
+  },
+  {
+    icon: Headset,
+    title: "IT Consulting & BPO",
+    desc: "Advisory, support, and outsourced processes that keep you moving.",
+    href: "/software",
+    img: i4Img,
   },
 ];
 
@@ -256,6 +354,118 @@ const AboutPage = () => (
       </div>
     </section>
 
+    {/* ============ CORE VALUES ============ */}
+    <section className="about-values">
+      <div className="about-values-inner">
+        <motion.div className="about-values-header" {...fadeUp(0.1)}>
+          <span className="about-eyebrow">
+            <span className="about-eyebrow-dot" />
+            Core Values
+          </span>
+          <h2 className="about-values-title">
+            What we <span className="about-hero-accent">stand for</span>
+          </h2>
+          <p className="about-values-sub">
+            The principles behind every project, partnership, and team member
+            at Grow More Solutions.
+          </p>
+        </motion.div>
+
+        <div className="about-values-grid">
+          {VALUES.map((value, i) => (
+            <motion.div
+              key={value.num}
+              className={`about-value-card${
+                i === 0 ? " about-value-card--feature" : ""
+              }${i === VALUES.length - 1 ? " about-value-card--wide" : ""}`}
+              initial={{ opacity: 0, y: 34, scale: 0.97 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ duration: 0.55, delay: 0.06 * i, ease: [0.22, 1, 0.36, 1] }}
+              viewport={{ amount: 0.2 }}
+            >
+              {i === 0 && (
+                <>
+                  <span className="about-value-watermark">{value.num}</span>
+                  <span className="about-value-blob" />
+                </>
+              )}
+
+              <span className="about-value-card-top">
+                <span className="about-value-icon">
+                  <value.icon size={i === 0 ? 30 : 20} strokeWidth={1.7} />
+                </span>
+                <span className="about-value-num">{value.num}</span>
+              </span>
+
+              <h3 className="about-value-name">{value.title}</h3>
+              <p className="about-value-desc">{value.desc}</p>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* ============ WHY GROW MORE ============ */}
+    <section className="about-why">
+      <div className="about-why-inner">
+        <motion.div className="about-why-media" {...fadeLeft(0.1)}>
+          <div className="about-why-frame">
+            <img
+              src={partImg}
+              alt="Grow More Solutions project delivery"
+              loading="lazy"
+            />
+          </div>
+          <motion.div
+            className="about-why-badge"
+            animate={{ y: [0, -9, 0] }}
+            transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <span className="about-why-badge-num">120+</span>
+            <span className="about-why-badge-label">Projects Delivered</span>
+          </motion.div>
+          <span className="about-why-corner" />
+        </motion.div>
+
+        <motion.div className="about-why-content" {...fadeRight(0.15)}>
+          <span className="about-eyebrow">
+            <span className="about-eyebrow-dot" />
+            Why GMS
+          </span>
+          <h2 className="about-why-title">
+            One partner, <br />
+            <span className="about-hero-accent">blueprint to delivery</span>
+          </h2>
+          <p className="about-why-sub">
+            Most businesses juggle separate vendors for design, build, and
+            software. We bring every discipline under one roof, so your project
+            moves as one.
+          </p>
+
+          <div className="about-why-list">
+            {DIFFERENTIATORS.map((item, i) => (
+              <motion.div
+                key={item.title}
+                className="about-why-item"
+                initial={{ opacity: 0, x: 24 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.45, delay: 0.1 + i * 0.08 }}
+                viewport={{ amount: 0.4 }}
+              >
+                <span className="about-why-item-icon">
+                  <item.icon size={18} strokeWidth={1.8} />
+                </span>
+                <div className="about-why-item-body">
+                  <h4 className="about-why-item-title">{item.title}</h4>
+                  <p className="about-why-item-desc">{item.desc}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+      </div>
+    </section>
+
     {/* ============ LEADERSHIP ============ */}
     <section className="about-leadership">
       <div className="about-leadership-inner">
@@ -324,6 +534,51 @@ const AboutPage = () => (
               <span className="about-brand-tagline">{brand.tagline}</span>
               <h3 className="about-brand-name">{brand.name}</h3>
               <p className="about-brand-desc">{brand.desc}</p>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+{/* ============ DIVISIONS AT A GLANCE ============ */}
+    <section className="about-divisions">
+      <div className="about-divisions-inner">
+        <motion.div className="about-divisions-header" {...fadeUp(0.1)}>
+          <span className="about-eyebrow">
+            <span className="about-eyebrow-dot" />
+            Divisions
+          </span>
+          <h2 className="about-divisions-title">What we do, at a glance</h2>
+          <p className="about-divisions-sub">
+            Four operating divisions, one company — pick the capability you
+            need and we will handle the rest.
+          </p>
+        </motion.div>
+
+        <div className="about-divisions-grid">
+          {DIVISIONS.map((division, i) => (
+            <motion.div
+              key={division.title}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.08 * i }}
+              viewport={{ amount: 0.25 }}
+            >
+              <Link to={division.href} className="about-division-card">
+                <img src={division.img} alt={division.title} loading="lazy" />
+                <span className="about-division-overlay" />
+                <span className="about-division-body">
+                  <span className="about-division-icon">
+                    <division.icon size={18} strokeWidth={1.8} />
+                  </span>
+                  <h3 className="about-division-name">{division.title}</h3>
+                  <p className="about-division-desc">{division.desc}</p>
+                  <span className="about-division-link">
+                    Explore
+                    <ArrowUpRight size={15} strokeWidth={2} />
+                  </span>
+                </span>
+              </Link>
             </motion.div>
           ))}
         </div>

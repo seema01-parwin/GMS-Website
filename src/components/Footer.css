@@ -81,7 +81,7 @@
 /* ---- Grid ---- */
 .footer-grid {
     display: grid;
-    grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr 1.2fr;
     gap: 48px;
     padding-bottom: 48px;
 }
@@ -94,7 +94,7 @@
 }
 
 .footer-logo {
-    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-weight: 800;
     font-size: 1.6rem;
     letter-spacing: -0.01em;
@@ -102,7 +102,7 @@
 }
 
 .footer-tagline {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-size: 13px;
     line-height: 1.75;
     color: var(--footer-text-muted);
@@ -136,7 +136,7 @@
 
 /* ---- Columns ---- */
 .footer-col-title {
-    font-family: 'JetBrains Mono', 'Inter', monospace;
+    font-family: 'Poppins', 'Poppins', monospace;
     font-size: 10px;
     font-weight: 700;
     letter-spacing: 2px;
@@ -157,7 +157,7 @@
 .footer-link {
     display: block;
     padding: 7px 0;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-size: 13px;
     color: var(--footer-text-muted);
     text-decoration: none;
@@ -204,7 +204,7 @@
 }
 
 .footer-contact-label {
-    font-family: 'JetBrains Mono', 'Inter', monospace;
+    font-family: 'Poppins', 'Poppins', monospace;
     font-size: 9px;
     font-weight: 600;
     letter-spacing: 1.5px;
@@ -213,7 +213,7 @@
 }
 
 .footer-contact-value {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-size: 13px;
     color: var(--footer-text-muted);
     text-decoration: none;
@@ -236,7 +236,7 @@ a.footer-contact-value:hover {
 }
 
 .footer-copy {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-size: 12px;
     color: var(--footer-text-dim);
 }
@@ -251,7 +251,7 @@ a.footer-contact-value:hover {
 .footer-bottom-links a {
     color: var(--footer-text-muted);
     text-decoration: none;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Poppins', sans-serif;
     transition: color .2s;
 }
 

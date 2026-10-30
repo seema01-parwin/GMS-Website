@@ -1,6 +1,6 @@
 import React from "react";
 // eslint-disable-next-line no-unused-vars -- motion is used via <motion.div> JSX member expressions
-import { motion } from "motion/react";
+import { motion, useReducedMotion } from "motion/react";
 import {
   HardHat,
   Route,
@@ -18,6 +18,8 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import PlatformFeatures from "../components/PlatformFeatures";
 import CTA from "../sections/CTA";
+import infraHeroImg from "../assets/inHero1.jpg";
+import infraInsetImg from "../assets/inHero.jpg";
 import "./InfrastructurePage.css";
 
 const CAPABILITIES = [
@@ -115,189 +117,268 @@ const fadeUp = (delay = 0) => ({
   viewport: { amount: 0.3 },
 });
 
-const InfrastructurePage = () => (
-  <div>
-    <Navbar />
+const InfrastructurePage = () => {
+  const reduceMotion = useReducedMotion();
 
-    {/* ============ HERO ============ */}
-    <section className="infra-hero">
-      <div className="infra-hero-inner">
-        <motion.div className="infra-hero-content" {...fadeUp(0.1)}>
-          <span className="infra-eyebrow">
-            <span className="infra-eyebrow-dot" />
-            Infrastructure
-          </span>
-          <h1 className="infra-hero-title">
-            Engineering the
-            <br />
-            <span className="infra-hero-accent">Foundation of Progress</span>
-          </h1>
-          <p className="infra-hero-sub">
-            From roadworks and utilities to commercial buildings, we design and
-            deliver infrastructure projects engineered for durability, safety,
-            and long-term performance across Sri Lanka.
-          </p>
-          <div className="infra-hero-actions">
-            <a href="/contact" className="hero-btn primary">
-              Start a Project <ArrowRight size={16} />
-            </a>
-            <a href="#capabilities" className="infra-hero-text-link">
-              Our Services <ArrowRight size={14} />
-            </a>
+  // masked line reveal for the headline
+  const lineIn = (delay) =>
+    reduceMotion
+      ? {}
+      : {
+          initial: { y: "115%" },
+          animate: { y: "0%" },
+          transition: { duration: 0.8, delay, ease: [0.16, 1, 0.3, 1] },
+        };
+
+  const riseIn = (delay) =>
+    reduceMotion
+      ? {}
+      : {
+          initial: { opacity: 0, y: 26 },
+          animate: { opacity: 1, y: 0 },
+          transition: { duration: 0.7, delay, ease: [0.16, 1, 0.3, 1] },
+        };
+
+  return (
+    <div>
+      <Navbar />
+
+      {/* ============ HERO ============ */}
+      <section className="infra-hero">
+        <div className="infra-hero-inner">
+          <div className="infra-hero-content">
+            <motion.span className="infra-eyebrow" {...riseIn(0.05)}>
+              <span className="infra-eyebrow-dot" />
+              Infrastructure
+            </motion.span>
+
+            <h1 className="infra-hero-title">
+              <span className="infra-title-mask">
+                <motion.span {...lineIn(0.15)}>Engineering the</motion.span>
+              </span>
+              <span className="infra-title-mask">
+                <motion.span className="infra-hero-accent" {...lineIn(0.28)}>
+                  Foundation of Progress
+                </motion.span>
+              </span>
+            </h1>
+
+            <motion.p className="infra-hero-sub" {...riseIn(0.4)}>
+              From roadworks and utilities to commercial buildings, we design and
+              deliver infrastructure projects engineered for durability, safety,
+              and long-term performance across Sri Lanka.
+            </motion.p>
+
+            <motion.div className="infra-hero-actions" {...riseIn(0.5)}>
+              <a href="/contact" className="hero-btn primary">
+                Start a Project <ArrowRight size={16} />
+              </a>
+              <a href="#capabilities" className="infra-hero-text-link">
+                Our Services <ArrowRight size={14} />
+              </a>
+            </motion.div>
+
+            <motion.div className="infra-hero-meta" {...riseIn(0.62)}>
+              <span className="infra-meta-chip">ISO 9001 Certified</span>
+              <span className="infra-meta-chip">25+ Years On Site</span>
+              <span className="infra-meta-chip">120+ Projects</span>
+            </motion.div>
           </div>
-        </motion.div>
 
-        <motion.div className="infra-hero-visual" {...fadeUp(0.2)}>
-          <div className="infra-hero-blueprint">
-            <div className="infra-bp-grid" aria-hidden="true" />
-            <div className="infra-bp-content">
-              <div className="infra-bp-line infra-bp-h1" />
-              <div className="infra-bp-line infra-bp-h2" />
-              <div className="infra-bp-line infra-bp-v1" />
-              <div className="infra-bp-line infra-bp-v2" />
-              <div className="infra-bp-cross" />
-              <div className="infra-bp-label">SECTION A-A</div>
-              <div className="infra-bp-dim infra-bp-dim-top">12.5m</div>
-              <div className="infra-bp-dim infra-bp-dim-right">8.2m</div>
-              <div className="infra-bp-badge">
-                <HardHat size={20} strokeWidth={1.8} />
-                <span>GMS</span>
+          {/* Survey site-plan composition */}
+          <motion.div className="infra-hero-visual" {...riseIn(0.35)}>
+            <div className="infra-sheet">
+              <div className="infra-dim" aria-hidden="true">
+                <span className="infra-dim-cap" />
+                <span className="infra-dim-bar" />
+                <span className="infra-dim-cap" />
+                <span className="infra-dim-label">GRID 06°55′ N — 79°51′ E</span>
+              </div>
+
+              <div className="infra-shot infra-shot--main">
+                <img
+                  src={infraHeroImg}
+                  alt="Bridge pylons and tower cranes rising above a city construction site"
+                />
+                <span className="infra-shot-tint" aria-hidden="true" />
+                <span className="infra-marker infra-marker--a" aria-hidden="true" />
+                <span className="infra-marker infra-marker--b" aria-hidden="true" />
+                <span className="infra-shot-tag">Site Plan 01 / Colombo</span>
+              </div>
+
+              <div className="infra-shot infra-shot--inset">
+                <img
+                  src={infraInsetImg}
+                  alt="Tower crane lifting precast slabs over a concrete building frame"
+                />
+                <span className="infra-shot-tint" aria-hidden="true" />
+                <span className="infra-shot-tag">Pour 04 · Day 118</span>
+              </div>
+
+              <div className="infra-hud">
+                <div className="infra-hud-head">
+                  <span>Project Load</span>
+                  <span className="infra-hud-live">
+                    <i aria-hidden="true" /> Live
+                  </span>
+                </div>
+                <div className="infra-hud-row">
+                  <span>Structure</span>
+                  <b>92%</b>
+                  <span className="infra-hud-track">
+                    <i style={{ "--w": "92%", "--d": "0.7s" }} />
+                  </span>
+                </div>
+                <div className="infra-hud-row">
+                  <span>Earthworks</span>
+                  <b>78%</b>
+                  <span className="infra-hud-track">
+                    <i style={{ "--w": "78%", "--d": "0.85s" }} />
+                  </span>
+                </div>
+                <div className="infra-hud-row">
+                  <span>Utilities</span>
+                  <b>64%</b>
+                  <span className="infra-hud-track">
+                    <i style={{ "--w": "64%", "--d": "1s" }} />
+                  </span>
+                </div>
               </div>
             </div>
-          </div>
-        </motion.div>
-      </div>
-    </section>
-
-    {/* ============ RESULTS BAR ============ */}
-    <section className="infra-results">
-      <div className="infra-results-inner">
-        {RESULTS.map((r, i) => (
-          <motion.div
-            key={r.label}
-            className="infra-result"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: i * 0.1 }}
-            viewport={{ amount: 0.5 }}
-          >
-            <strong className="infra-result-num">{r.num}</strong>
-            <span className="infra-result-label">{r.label}</span>
           </motion.div>
-        ))}
-      </div>
-    </section>
-
-    {/* ============ CAPABILITIES ============ */}
-    <section className="infra-capabilities" id="capabilities">
-      <div className="infra-cap-inner">
-        <motion.div className="infra-cap-header" {...fadeUp(0.1)}>
-          <span className="infra-eyebrow">
-            <span className="infra-eyebrow-dot" />
-            What We Do
-          </span>
-          <h2 className="infra-cap-title">
-            Full-Spectrum <span className="infra-hero-accent">Infrastructure</span>
-          </h2>
-          <p className="infra-cap-sub">
-            End-to-end infrastructure services — from initial surveys through
-            construction to handover — delivered with precision and local expertise.
-          </p>
-        </motion.div>
-
-        <div className="infra-cap-grid">
-          {CAPABILITIES.map((cap, i) => (
-            <motion.div
-              key={cap.title}
-              className="infra-cap-card"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: i * 0.08 }}
-              viewport={{ amount: 0.3 }}
-            >
-              <span className="infra-cap-icon">
-                <cap.icon size={22} strokeWidth={1.8} />
-              </span>
-              <h4 className="infra-cap-card-title">{cap.title}</h4>
-              <p className="infra-cap-card-desc">{cap.desc}</p>
-            </motion.div>
-          ))}
         </div>
-      </div>
-    </section>
+      </section>
 
-    {/* ============ PROCESS ============ */}
-    <section className="infra-process">
-      <div className="infra-process-inner">
-        <motion.div className="infra-process-header" {...fadeUp(0.1)}>
-          <span className="infra-eyebrow">
-            <span className="infra-eyebrow-dot" />
-            Our Process
-          </span>
-          <h2 className="infra-process-title">
-            How We <span className="infra-hero-accent">Deliver</span>
-          </h2>
-        </motion.div>
-
-        <div className="infra-process-grid">
-          {PROCESS.map((step, i) => (
+      {/* ============ RESULTS BAR ============ */}
+      <section className="infra-results">
+        <div className="infra-results-inner">
+          {RESULTS.map((r, i) => (
             <motion.div
-              key={step.num}
-              className="infra-process-card"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: i * 0.08 }}
-              viewport={{ amount: 0.3 }}
-            >
-              <span className="infra-process-num">{step.num}</span>
-              <span className="infra-process-icon">
-                <step.icon size={20} strokeWidth={1.8} />
-              </span>
-              <h4 className="infra-process-card-title">{step.title}</h4>
-              <p className="infra-process-card-desc">{step.desc}</p>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-    </section>
-
-    {/* ============ PLATFORM ============ */}
-    <PlatformFeatures />
-
-    {/* ============ PROJECT TYPES ============ */}
-    <section className="infra-projects">
-      <div className="infra-projects-inner">
-        <motion.div className="infra-projects-header" {...fadeUp(0.1)}>
-          <span className="infra-eyebrow">
-            <span className="infra-eyebrow-dot" />
-            Project Types
-          </span>
-          <h2 className="infra-projects-title">
-            Areas of <span className="infra-hero-accent">Expertise</span>
-          </h2>
-        </motion.div>
-
-        <div className="infra-projects-grid">
-          {PROJECTS.map((proj, i) => (
-            <motion.div
-              key={proj.name}
-              className="infra-project-item"
+              key={r.label}
+              className="infra-result"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: i * 0.06 }}
+              transition={{ duration: 0.5, delay: i * 0.1 }}
               viewport={{ amount: 0.5 }}
             >
-              <span className="infra-project-name">{proj.name}</span>
-              <span className="infra-project-type">{proj.type}</span>
+              <strong className="infra-result-num">{r.num}</strong>
+              <span className="infra-result-label">{r.label}</span>
             </motion.div>
           ))}
         </div>
-      </div>
-    </section>
+      </section>
 
-    <CTA />
-    <Footer />
-  </div>
-);
+      {/* ============ CAPABILITIES ============ */}
+      <section className="infra-capabilities" id="capabilities">
+        <div className="infra-cap-inner">
+          <motion.div className="infra-cap-header" {...fadeUp(0.1)}>
+            <span className="infra-eyebrow">
+              <span className="infra-eyebrow-dot" />
+              What We Do
+            </span>
+            <h2 className="infra-cap-title">
+              Full-Spectrum <span className="infra-hero-accent">Infrastructure</span>
+            </h2>
+            <p className="infra-cap-sub">
+              End-to-end infrastructure services — from initial surveys through
+              construction to handover — delivered with precision and local expertise.
+            </p>
+          </motion.div>
+
+          <div className="infra-cap-grid">
+            {CAPABILITIES.map((cap, i) => (
+              <motion.div
+                key={cap.title}
+                className="infra-cap-card"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: i * 0.08 }}
+                viewport={{ amount: 0.3 }}
+              >
+                <span className="infra-cap-icon">
+                  <cap.icon size={22} strokeWidth={1.8} />
+                </span>
+                <h4 className="infra-cap-card-title">{cap.title}</h4>
+                <p className="infra-cap-card-desc">{cap.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ============ PROCESS ============ */}
+      <section className="infra-process">
+        <div className="infra-process-inner">
+          <motion.div className="infra-process-header" {...fadeUp(0.1)}>
+            <span className="infra-eyebrow">
+              <span className="infra-eyebrow-dot" />
+              Our Process
+            </span>
+            <h2 className="infra-process-title">
+              How We <span className="infra-hero-accent">Deliver</span>
+            </h2>
+          </motion.div>
+
+          <div className="infra-process-grid">
+            {PROCESS.map((step, i) => (
+              <motion.div
+                key={step.num}
+                className="infra-process-card"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: i * 0.08 }}
+                viewport={{ amount: 0.3 }}
+              >
+                <span className="infra-process-num">{step.num}</span>
+                <span className="infra-process-icon">
+                  <step.icon size={20} strokeWidth={1.8} />
+                </span>
+                <h4 className="infra-process-card-title">{step.title}</h4>
+                <p className="infra-process-card-desc">{step.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ============ PLATFORM ============ */}
+      <PlatformFeatures />
+
+      {/* ============ PROJECT TYPES ============ */}
+      <section className="infra-projects">
+        <div className="infra-projects-inner">
+          <motion.div className="infra-projects-header" {...fadeUp(0.1)}>
+            <span className="infra-eyebrow">
+              <span className="infra-eyebrow-dot" />
+              Project Types
+            </span>
+            <h2 className="infra-projects-title">
+              Areas of <span className="infra-hero-accent">Expertise</span>
+            </h2>
+          </motion.div>
+
+          <div className="infra-projects-grid">
+            {PROJECTS.map((proj, i) => (
+              <motion.div
+                key={proj.name}
+                className="infra-project-item"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: i * 0.06 }}
+                viewport={{ amount: 0.5 }}
+              >
+                <span className="infra-project-name">{proj.name}</span>
+                <span className="infra-project-type">{proj.type}</span>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <CTA />
+      <Footer />
+    </div>
+  );
+};
 
 export default InfrastructurePage;

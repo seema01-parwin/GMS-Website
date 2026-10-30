@@ -7,7 +7,7 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-family: 'JetBrains Mono', 'Inter', monospace;
+  font-family: 'Poppins', 'Poppins', monospace;
   font-size: 10px;
   font-weight: 700;
   letter-spacing: 2px;
@@ -41,7 +41,7 @@
 }
 
 .contact-hero-title {
-  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+  font-family: 'Poppins', 'Poppins', sans-serif;
   font-weight: 800;
   font-size: clamp(2.6rem, 5vw, 4rem);
   line-height: 1.1;
@@ -51,7 +51,7 @@
 }
 
 .contact-hero-sub {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 1.05rem;
   line-height: 1.7;
   color: rgba(255, 255, 255, 0.65);
@@ -64,7 +64,7 @@
   align-items: center;
   gap: 6px;
   margin-top: 24px;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 0.85rem;
   color: rgba(255, 255, 255, 0.5);
 }
@@ -128,7 +128,7 @@
 
 .contact-info-label {
   display: block;
-  font-family: 'JetBrains Mono', 'Inter', monospace;
+  font-family: 'Poppins', 'Poppins', monospace;
   font-size: 10px;
   font-weight: 700;
   letter-spacing: 2px;
@@ -138,7 +138,7 @@
 }
 
 .contact-info-title {
-  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+  font-family: 'Poppins', 'Poppins', sans-serif;
   font-weight: 700;
   font-size: 1.1rem;
   color: var(--text);
@@ -147,7 +147,7 @@
 
 .contact-info-value {
   display: block;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 0.95rem;
   font-weight: 600;
   color: var(--text);
@@ -166,7 +166,7 @@
 
 .contact-info-detail {
   display: block;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 0.82rem;
   color: var(--text-secondary);
 }
@@ -196,7 +196,7 @@
 }
 
 .contact-form-title {
-  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+  font-family: 'Poppins', 'Poppins', sans-serif;
   font-weight: 800;
   font-size: clamp(1.5rem, 3vw, 2rem);
   color: var(--text);
@@ -205,7 +205,7 @@
 }
 
 .contact-form-sub {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 0.92rem;
   line-height: 1.7;
   color: var(--text-secondary);
@@ -232,14 +232,14 @@
 }
 
 .contact-label {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 0.82rem;
   font-weight: 600;
   color: var(--text);
 }
 
 .contact-input {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 0.92rem;
   color: var(--text);
   background: var(--bg);
@@ -277,7 +277,7 @@
   padding: 14px 32px;
   background: var(--accentbtn);
   color: #fff;
-  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+  font-family: 'Poppins', 'Poppins', sans-serif;
   font-weight: 700;
   font-size: 14px;
   border: none;
@@ -331,7 +331,7 @@
 }
 
 .contact-map-title {
-  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+  font-family: 'Poppins', 'Poppins', sans-serif;
   font-weight: 800;
   font-size: 1.3rem;
   color: var(--text);
@@ -339,7 +339,7 @@
 }
 
 .contact-map-address {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 0.92rem;
   line-height: 1.7;
   color: var(--text-secondary);
@@ -350,7 +350,7 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 0.85rem;
   font-weight: 600;
   color: var(--accentbtn);
@@ -370,7 +370,7 @@
 }
 
 .contact-office-title {
-  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+  font-family: 'Poppins', 'Poppins', sans-serif;
   font-weight: 700;
   font-size: 1.1rem;
   color: var(--text);
@@ -400,7 +400,7 @@
 
 .contact-office-city {
   display: block;
-  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+  font-family: 'Poppins', 'Poppins', sans-serif;
   font-weight: 700;
   font-size: 0.92rem;
   color: var(--text);
@@ -408,7 +408,7 @@
 
 .contact-office-addr {
   display: block;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 0.82rem;
   color: var(--text-secondary);
   margin-top: 2px;

@@ -54,7 +54,7 @@
   position: absolute;
   bottom: -30px;
   right: -10px;
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-weight: 800;
   font-size: clamp(90px, 15vw, 200px);
   line-height: 1;
@@ -85,7 +85,7 @@
   align-items: center;
   gap: 8px;
   padding: 13px 22px;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Poppins', monospace;
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.08em;
@@ -138,7 +138,7 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Poppins', monospace;
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.14em;
@@ -158,7 +158,7 @@
 }
 
 .legal-hero-title {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-weight: 800;
   font-size: clamp(2.2rem, 4.6vw, 3.4rem);
   line-height: 1.12;
@@ -175,7 +175,7 @@
 }
 
 .legal-hero-sub {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 16.5px;
   line-height: 1.75;
   color: var(--text-secondary);
@@ -205,7 +205,7 @@
   display: inline-flex;
   align-items: center;
   gap: 7px;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Poppins', monospace;
   font-size: 11px;
   letter-spacing: 0.06em;
   color: var(--text-secondary);
@@ -219,7 +219,7 @@
 }
 
 .legal-cover-stamp {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Poppins', monospace;
   font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.22em;
@@ -257,7 +257,7 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Poppins', monospace;
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.14em;
@@ -281,7 +281,7 @@
   text-decoration: none;
   color: var(--text-secondary);
   border-left: 2px solid var(--border);
-  font-family: 'Inter', sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 13.5px;
   line-height: 1.4;
   transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease;
@@ -300,7 +300,7 @@
 
 .legal-toc-no {
   flex-shrink: 0;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Poppins', monospace;
   font-size: 11px;
   font-weight: 700;
   color: var(--accentbtn);
@@ -312,7 +312,7 @@
 }
 
 .legal-toc-note {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 12px;
   line-height: 1.6;
   color: var(--text-secondary);
@@ -326,7 +326,7 @@
   align-items: center;
   gap: 7px;
   align-self: flex-start;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Poppins', monospace;
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.06em;
@@ -370,14 +370,14 @@
 
 .legal-note strong {
   display: block;
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 15px;
   color: var(--text);
   margin-bottom: 4px;
 }
 
 .legal-note p {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 14px;
   line-height: 1.7;
   color: var(--text-secondary);
@@ -404,7 +404,7 @@
 }
 
 .legal-clause-num {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-weight: 800;
   font-size: clamp(2rem, 3.4vw, 2.4rem);
   line-height: 1;
@@ -456,7 +456,7 @@
 
 .legal-clause-code {
   align-self: end;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Poppins', monospace;
   font-size: 10px;
   font-weight: 600;
   letter-spacing: 0.14em;
@@ -466,7 +466,7 @@
 
 .legal-clause-title {
   align-self: start;
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-weight: 700;
   font-size: clamp(1.1rem, 1.8vw, 1.35rem);
   line-height: 1.3;
@@ -476,7 +476,7 @@
 }
 
 .legal-clause-lead {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 14.5px;
   line-height: 1.75;
   color: var(--text-secondary);
@@ -494,7 +494,7 @@
 .legal-clause-list li {
   position: relative;
   padding-left: 24px;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 14px;
   line-height: 1.7;
   color: var(--text-secondary);
@@ -545,7 +545,7 @@
   display: flex;
   align-items: center;
   gap: 16px;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Poppins', monospace;
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.2em;
@@ -576,7 +576,7 @@
 
 .legal-end-label {
   display: block;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Poppins', monospace;
   font-size: 10px;
   font-weight: 600;
   letter-spacing: 0.14em;
@@ -587,7 +587,7 @@
 
 .legal-end-cell strong {
   display: block;
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-weight: 700;
   font-size: 15px;
   line-height: 1.4;
@@ -596,7 +596,7 @@
 
 .legal-end-cell span:not(.legal-end-label) {
   display: block;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 12.5px;
   line-height: 1.6;
   color: var(--text-secondary);
@@ -620,7 +620,7 @@
 }
 
 .legal-cta-title {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-weight: 800;
   font-size: clamp(1.35rem, 2.4vw, 1.8rem);
   letter-spacing: -0.01em;
@@ -629,7 +629,7 @@
 }
 
 .legal-cta-sub {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 14px;
   line-height: 1.7;
   color: var(--text-secondary);
@@ -649,7 +649,7 @@
   justify-content: center;
   gap: 8px;
   padding: 12px 24px;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Poppins', monospace;
   font-weight: 600;
   font-size: 12px;
   letter-spacing: 0.05em;

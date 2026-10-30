@@ -12,6 +12,8 @@ import {
   Building2,
   PenTool,
   Headset,
+  ShoppingBag,
+  Gem,
   Menu,
   X,
 } from "lucide-react";
@@ -183,6 +185,22 @@ const Navbar = () => {
                 </div>
               </Link>
 
+              <Link to="/ecommerce" className="service-card">
+                <div className="service-icon"><ShoppingBag size={18} /></div>
+                <div className="service-text">
+                  <span className="service-title">E-Commerce</span>
+                  <span className="service-desc">Online stores and marketplace platforms</span>
+                </div>
+              </Link>
+
+              <Link to="/gemstone-marketplace" className="service-card">
+                <div className="service-icon"><Gem size={18} /></div>
+                <div className="service-text">
+                  <span className="service-title">Gemstone Marketplace</span>
+                  <span className="service-desc">Verified gemstone trading platform</span>
+                </div>
+              </Link>
+
             </div>
 
             <div className="mega-menu-footer">
@@ -335,6 +353,12 @@ const Navbar = () => {
             </Link>
             <Link to="/bpo" className="mobile-sublink" onClick={closeMobile}>
               <Headset size={15} /> BPO
+            </Link>
+            <Link to="/ecommerce" className="mobile-sublink" onClick={closeMobile}>
+              <ShoppingBag size={15} /> E-Commerce
+            </Link>
+            <Link to="/gemstone-marketplace" className="mobile-sublink" onClick={closeMobile}>
+              <Gem size={15} /> Gemstone Marketplace
             </Link>
           </div>
 

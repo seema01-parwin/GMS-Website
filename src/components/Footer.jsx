@@ -13,18 +13,25 @@ const NAV_LINKS = [
   { label: "About Us", href: "/about" },
   { label: "Services", href: "/services" },
   { label: "Projects", href: "/projects" },
-  { label: "Careers", href: "/careers" },
+  { label: "Careers", href: "/career" },
   { label: "Contact", href: "/contact" },
 ];
 
 const SERVICE_LINKS = [
-  { label: "Infrastructure", href: "/services/infrastructure" },
-  { label: "Master Planning", href: "/services/master-planning" },
-  { label: "Software Development", href: "/services/software" },
-  { label: "Interior Design", href: "/services/interior-design" },
-  { label: "Real Estate", href: "/services/real-estate" },
-  { label: "Marketing", href: "/services/marketing" },
-  { label: "Graphic Design", href: "/services/graphic-design" },
+  { label: "Infrastructure", href: "/infrastructure" },
+  { label: "Master Planning", href: "/master-planning" },
+  { label: "Software Development", href: "/software" },
+  { label: "Interior Design", href: "/interior-design" },
+  { label: "Real Estate", href: "/real-estate" },
+  { label: "Marketing", href: "/marketing" },
+  { label: "Graphic Design", href: "/graphic-design" },
+];
+
+const EXPLORE_LINKS = [
+  { label: "Gallery", href: "/gallery" },
+  { label: "Portfolio", href: "/portfolio" },
+  { label: "Blog", href: "/blog" },
+  { label: "News", href: "/news" },
 ];
 
 const SOCIALS = [
@@ -90,6 +97,18 @@ const Footer = () => {
                 {SERVICE_LINKS.map((link) => (
                   <li key={link.label}>
                     <a href={link.href} className="footer-link">{link.label}</a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Explore */}
+            <div className="footer-col">
+              <h4 className="footer-col-title">Explore</h4>
+              <ul className="footer-links">
+                {EXPLORE_LINKS.map((link) => (
+                  <li key={link.label}>
+                    <Link to={link.href} className="footer-link">{link.label}</Link>
                   </li>
                 ))}
               </ul>

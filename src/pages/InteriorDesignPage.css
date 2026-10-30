@@ -7,7 +7,7 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-family: 'JetBrains Mono', 'Inter', monospace;
+  font-family: 'Poppins', 'Poppins', monospace;
   font-size: 10px;
   font-weight: 700;
   letter-spacing: 2px;
@@ -51,7 +51,7 @@
 }
 
 .id-hero-title {
-  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+  font-family: 'Poppins', 'Poppins', sans-serif;
   font-weight: 800;
   font-size: clamp(2.6rem, 5vw, 3.8rem);
   line-height: 1.1;
@@ -61,7 +61,7 @@
 }
 
 .id-hero-sub {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 1rem;
   line-height: 1.8;
   color: var(--text-secondary);
@@ -79,7 +79,7 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Poppins', monospace;
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.04em;
@@ -263,7 +263,7 @@
   border: 1px solid rgba(4, 140, 182, 0.3);
   background: rgba(4, 140, 182, 0.06);
   color: var(--accentbtn);
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Poppins', monospace;
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -306,7 +306,7 @@
 }
 
 .id-result-num {
-  font-family: 'JetBrains Mono', 'Plus Jakarta Sans', monospace;
+  font-family: 'Poppins', 'Poppins', monospace;
   font-weight: 800;
   font-size: 1.8rem;
   letter-spacing: -0.01em;
@@ -317,7 +317,7 @@
 }
 
 .id-result-label {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 0.82rem;
   color: var(--text-secondary);
 }
@@ -341,7 +341,7 @@
 }
 
 .id-cap-title {
-  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+  font-family: 'Poppins', 'Poppins', sans-serif;
   font-weight: 800;
   font-size: clamp(2rem, 4vw, 3rem);
   letter-spacing: -0.01em;
@@ -351,7 +351,7 @@
 }
 
 .id-cap-sub {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 1rem;
   line-height: 1.7;
   color: var(--text-secondary);
@@ -391,7 +391,7 @@
 }
 
 .id-cap-card-title {
-  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+  font-family: 'Poppins', 'Poppins', sans-serif;
   font-weight: 700;
   font-size: 1.1rem;
   color: var(--text);
@@ -399,7 +399,7 @@
 }
 
 .id-cap-card-desc {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 0.88rem;
   line-height: 1.7;
   color: var(--text-secondary);
@@ -425,7 +425,7 @@
 }
 
 .id-process-title {
-  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+  font-family: 'Poppins', 'Poppins', sans-serif;
   font-weight: 800;
   font-size: clamp(2rem, 4vw, 3rem);
   letter-spacing: -0.01em;
@@ -458,7 +458,7 @@
   position: absolute;
   top: 16px;
   right: 20px;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Poppins', monospace;
   font-weight: 700;
   font-size: 2.5rem;
   line-height: 1;
@@ -483,7 +483,7 @@ body.dark-mode .id-process-num {
 }
 
 .id-process-card-title {
-  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+  font-family: 'Poppins', 'Poppins', sans-serif;
   font-weight: 700;
   font-size: 1.1rem;
   color: var(--text);
@@ -491,7 +491,7 @@ body.dark-mode .id-process-num {
 }
 
 .id-process-card-desc {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 0.88rem;
   line-height: 1.7;
   color: var(--text-secondary);
@@ -517,7 +517,7 @@ body.dark-mode .id-process-num {
 }
 
 .id-styles-title {
-  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+  font-family: 'Poppins', 'Poppins', sans-serif;
   font-weight: 800;
   font-size: clamp(2rem, 4vw, 3rem);
   letter-spacing: -0.01em;
@@ -550,14 +550,14 @@ body.dark-mode .id-process-num {
 }
 
 .id-style-name {
-  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+  font-family: 'Poppins', 'Poppins', sans-serif;
   font-weight: 700;
   font-size: 1rem;
   color: var(--text);
 }
 
 .id-style-desc {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 0.85rem;
   line-height: 1.6;
   color: var(--text-secondary);

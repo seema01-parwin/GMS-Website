@@ -4,6 +4,9 @@ import softwareImg from "../assets/services/software-development.jpg";
 import interiorImg from "../assets/services/interior-design.jpg";
 import realEstateImg from "../assets/services/real-estate.jpg";
 import marketingImg from "../assets/services/marketing.jpg";
+import ecommerceImg from "../assets/services/ecommerce.jpg";
+import gemstoneImg from "../assets/services/gemstone-marketplace.jpg";
+import bpoImg from "../assets/services/bpo-services.jpg";
 
 import dashImg from "../assets/services/project-dashboard.jpg";
 import portalImg from "../assets/services/client-portal.jpg";
@@ -13,6 +16,45 @@ import securityImg from "../assets/services/security-compliance.jpg";
 import supportImg from "../assets/services/dedicated-support.jpg";
 
 export const SERVICES = [
+  {
+    key: "software",
+    label: "Software Development",
+    image: softwareImg,
+    desc: "Custom web and business software built to streamline operations — from CRMs to customer-facing platforms — tailored to how your business actually works.",
+    features: [
+      "Custom CRM & internal tools",
+      "Web & mobile application development",
+      "API integrations & automation",
+      "Ongoing support & maintenance",
+    ],
+    link: "/software",
+  },
+    {
+    key: "marketing",
+    label: "Marketing",
+    image: analyticsImg,
+    desc: "Data-driven marketing strategies that build brand visibility and drive measurable growth — from digital campaigns to full brand positioning.",
+    features: [
+      "Brand strategy & positioning",
+      "Digital & social media campaigns",
+      "SEO & content marketing",
+      "Performance tracking & analytics",
+    ],
+    link: "/marketing",
+  },
+    {
+    key: "graphic",
+    label: "Graphic Design",
+    image: marketingImg,
+    desc: "Creative branding, UI/UX design, and digital content that give your business a polished, consistent visual identity across every touchpoint.",
+    features: [
+      "Logo & brand identity design",
+      "UI/UX design for web & mobile",
+      "Print & digital content creation",
+      "Social media creatives & marketing assets",
+    ],
+    link: "/graphic-design",
+  },
   {
     key: "infrastructure",
     label: "Infrastructure",
@@ -38,19 +80,6 @@ export const SERVICES = [
       "Phased development roadmaps",
     ],
     link: "/master-planning",
-  },
-  {
-    key: "software",
-    label: "Software Development",
-    image: softwareImg,
-    desc: "Custom web and business software built to streamline operations — from CRMs to customer-facing platforms — tailored to how your business actually works.",
-    features: [
-      "Custom CRM & internal tools",
-      "Web & mobile application development",
-      "API integrations & automation",
-      "Ongoing support & maintenance",
-    ],
-    link: "/software",
   },
   {
     key: "interior",
@@ -79,30 +108,43 @@ export const SERVICES = [
     link: "/real-estate",
   },
   {
-    key: "marketing",
-    label: "Marketing",
-    image: analyticsImg,
-    desc: "Data-driven marketing strategies that build brand visibility and drive measurable growth — from digital campaigns to full brand positioning.",
+    key: "bpo",
+    label: "BPO",
+    image: bpoImg,
+    desc: "Reliable business process outsourcing — dedicated teams handling customer support, back-office operations, and data workflows so you can focus on growth.",
     features: [
-      "Brand strategy & positioning",
-      "Digital & social media campaigns",
-      "SEO & content marketing",
-      "Performance tracking & analytics",
+      "Dedicated support & back-office teams",
+      "Customer service & helpdesk operations",
+      "Data processing & quality assurance",
+      "SLA-backed delivery & reporting",
     ],
-    link: "/marketing",
+    link: "/bpo",
   },
   {
-    key: "graphic",
-    label: "Graphic Design",
-    image: marketingImg,
-    desc: "Creative branding, UI/UX design, and digital content that give your business a polished, consistent visual identity across every touchpoint.",
+    key: "ecommerce",
+    label: "E-Commerce",
+    image: ecommerceImg,
+    desc: "Conversion-focused online stores and marketplace platforms — designed to sell, scale, and connect with the tools your business already runs on.",
     features: [
-      "Logo & brand identity design",
-      "UI/UX design for web & mobile",
-      "Print & digital content creation",
-      "Social media creatives & marketing assets",
+      "Custom storefront design & build",
+      "Secure payments & checkout flows",
+      "Product & order management",
+      "Marketplace integrations & analytics",
     ],
-    link: "/graphic-design",
+    link: "/ecommerce",
+  },
+  {
+    key: "gemstone",
+    label: "Gemstone Marketplace",
+    image: gemstoneImg,
+    desc: "A trusted digital marketplace for gemstone trading — verified listings, secure transactions, and full traceability from seller to buyer.",
+    features: [
+      "Verified seller & listing management",
+      "Secure transactions & escrow flow",
+      "Certification & provenance records",
+      "Buyer–seller messaging & insights",
+    ],
+    link: "/gemstone-marketplace",
   },
 ];
 

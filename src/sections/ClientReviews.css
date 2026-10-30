@@ -17,7 +17,7 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-family: 'JetBrains Mono', 'Inter', monospace;
+  font-family: 'Poppins', 'Poppins', monospace;
   font-size: 10px;
   font-weight: 700;
   letter-spacing: 2px;
@@ -37,7 +37,7 @@
 }
 
 .reviews-title {
-  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+  font-family: 'Poppins', 'Poppins', sans-serif;
   font-weight: 800;
   font-size: clamp(2rem, 4vw, 3rem);
   letter-spacing: -0.01em;
@@ -84,7 +84,7 @@
 }
 
 .reviews-text {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 0.95rem;
   line-height: 1.75;
   color: var(--text);
@@ -112,7 +112,7 @@
 }
 
 .reviews-avatar span {
-  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+  font-family: 'Poppins', 'Poppins', sans-serif;
   font-weight: 700;
   font-size: 13px;
   color: #ffffff;
@@ -126,14 +126,14 @@
 }
 
 .reviews-author-name {
-  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+  font-family: 'Poppins', 'Poppins', sans-serif;
   font-weight: 700;
   font-size: 14px;
   color: var(--text);
 }
 
 .reviews-author-role {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 12px;
   color: var(--text-secondary);
 }
@@ -141,7 +141,7 @@
 .reviews-service-badge {
   display: inline-block;
   margin-top: 16px;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Poppins', monospace;
   font-size: 10px;
   font-weight: 600;
   letter-spacing: 0.05em;
