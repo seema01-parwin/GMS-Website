@@ -7,7 +7,6 @@ import { SERVICES } from "../data/constants";
 import { EASE } from "../utils/animations";
 import "./Hero.css";
 
-// One clip per service — filenames match the service links
 // (e.g. "/master-planning" -> master-planning.mp4).
 import softwareVid from "../assets/src_v/software.mp4";
 import marketingVid from "../assets/src_v/marketing.mp4";
