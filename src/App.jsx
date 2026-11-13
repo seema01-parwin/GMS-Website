@@ -16,6 +16,8 @@ import PortfolioPage from "./pages/PortfolioPage";
 import BlogPage from "./pages/BlogPage";
 import NewsPage from "./pages/NewsPage";
 import InteriorDesignPage from "./pages/InteriorDesignPage";
+import GemstoneMarketplacePage from "./pages/GemstoneMarketplacePage";
+import EcommercePage from "./pages/EcommercePage";
 import GraphicDesignPage from "./pages/GraphicDesignPage";
 import PrivacyPage from "./pages/PrivacyPage";
 import TermsPage from "./pages/TermsPage";
@@ -52,6 +54,8 @@ const App = () => {
           <Route path="/blog" element={<BlogPage />} />
           <Route path="/news" element={<NewsPage />} />
           <Route path="/interior-design" element={<InteriorDesignPage />} />
+          <Route path="/gemstone-marketplace" element={<GemstoneMarketplacePage />} />
+          <Route path="/ecommerce" element={<EcommercePage />} />
           <Route path="/graphic-design" element={<GraphicDesignPage />} />
           <Route path="/privacy" element={<PrivacyPage />} />
           <Route path="/terms" element={<TermsPage />} />

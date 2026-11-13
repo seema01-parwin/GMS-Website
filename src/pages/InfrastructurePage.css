@@ -41,7 +41,7 @@
   isolation: isolate;
   overflow: hidden;
   background: var(--bg);
-  padding: 100px 4rem 96px;
+  padding: 50px 4rem 96px;
 }
 
 /* faint survey grid backdrop, masked into a soft ellipse */
@@ -143,7 +143,7 @@
   color: var(--text-secondary);
   background: var(--card-bg);
   border: 1px solid var(--border);
-  padding: 7px 12px 7px 25px;
+  padding: 7px 12px 7px 25px; 
 }
 
 .infra-meta-chip::before {
@@ -235,7 +235,7 @@
 
 .infra-shot-tag {
   position: absolute;
-  left: 12px;
+  left: 130px;
   bottom: 12px;
   font-family: 'Poppins', monospace;
   font-size: 10px;
@@ -478,7 +478,7 @@
    RESULTS BAR
    ============================================ */
 .infra-results {
-  background: var(--navbar-bgg);
+  background: var(--bg);
   padding: 0 4rem;
 }
 
@@ -488,7 +488,7 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   border: 1px solid var(--border);
-  background: var(--card-bg);
+  background: var(--navbar-bgg);
 }
 
 .infra-result {
@@ -612,7 +612,7 @@
 }
 
 /* ============================================
-   PROCESS
+   PROCESS — survey chainage roadmap
    ============================================ */
 .infra-process {
   background: var(--navbar-bgg);
@@ -639,68 +639,349 @@
   line-height: 1.15;
 }
 
-.infra-process-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+/* --- road band --- */
+.ia-road {
+  position: relative;
 }
 
-.infra-process-card {
+.ia-band {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(50% - 28px);
+  height: 56px;
+  background: rgba(4, 140, 182, 0.045);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  transform-origin: left center;
+  z-index: 0;
+}
+
+body.dark-mode .ia-band {
+  background: rgba(56, 189, 248, 0.05);
+}
+
+/* marching centreline — progress reads left to right */
+.ia-band-center {
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  top: 50%;
+  height: 2px;
+  transform: translateY(-50%);
+  background: repeating-linear-gradient(
+    90deg,
+    var(--accentbtn) 0 16px,
+    transparent 16px 36px
+  );
+  opacity: 0.5;
+  animation: ia-march 1.1s linear infinite;
+}
+
+/* origin survey stake at CH 0+000 */
+.ia-band-stake {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 2px;
+  height: 36px;
+  transform: translateY(-50%);
+  background: var(--accentbtn);
+}
+
+.ia-band-stake::after {
+  content: "";
+  position: absolute;
+  left: -4px;
+  top: 50%;
+  width: 10px;
+  height: 10px;
+  transform: translateY(-50%);
+  border: 1.5px solid var(--accentbtn);
+  border-radius: 50%;
+  background: var(--navbar-bgg);
+}
+
+/* handover arrowhead */
+.ia-band-arrow {
+  position: absolute;
+  right: -2px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left: 16px solid var(--accentbtn);
+}
+
+/* --- stations & waypoint cards --- */
+.ia-steps {
   position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+
+.ia-step {
+  position: relative;
+  height: 700px;
+}
+
+.ia-card {
+  position: absolute;
+  left: 50%;
+  z-index: 0;
+  width: calc(100% + 26px);
+  transform: translateX(-50%);
   border: 1px solid var(--border);
   background: var(--card-bg);
-  padding: 36px 28px;
+  padding: 18px 18px 20px;
   transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
 }
 
-.infra-process-card:hover {
-  border-color: rgba(4, 140, 182, 0.35);
-  transform: translateY(-4px);
-  box-shadow: 0 16px 40px rgba(4, 140, 182, 0.1);
+.ia-step--up .ia-card {
+  bottom: calc(50% + 64px);
 }
 
-.infra-process-num {
+.ia-step--down .ia-card {
+  top: calc(50% + 64px);
+}
+
+.ia-card:hover {
+  border-color: rgba(4, 140, 182, 0.4);
+  box-shadow: 0 16px 40px rgba(4, 140, 182, 0.12);
+}
+
+.ia-step--up .ia-card:hover {
+  transform: translateX(-50%) translateY(4px);
+}
+
+.ia-step--down .ia-card:hover {
+  transform: translateX(-50%) translateY(-4px);
+}
+
+.ia-card-ghost {
   position: absolute;
-  top: 16px;
-  right: 20px;
-  font-family: 'Poppins', monospace;
-  font-weight: 700;
-  font-size: 2.5rem;
+  right: 10px;
+  bottom: -8px;
+  z-index: -1;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800;
+  font-size: 3rem;
   line-height: 1;
-  color: rgba(4, 140, 182, 0.08);
+  color: rgba(4, 140, 182, 0.07);
   pointer-events: none;
 }
 
-body.dark-mode .infra-process-num {
-  color: rgba(56, 189, 248, 0.1);
+body.dark-mode .ia-card-ghost {
+  color: rgba(56, 189, 248, 0.09);
 }
 
-.infra-process-icon {
+.ia-card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.ia-card-icon {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 44px;
-  height: 44px;
-  border: 1px solid rgba(4, 140, 182, 0.2);
-  background: rgba(4, 140, 182, 0.06);
+  flex: none;
+  width: 34px;
+  height: 34px;
+  border: 1px solid rgba(4, 140, 182, 0.22);
+  background: rgba(4, 140, 182, 0.07);
   color: var(--accentbtn);
-  margin-bottom: 20px;
 }
 
-.infra-process-card-title {
-  font-family: 'Poppins', 'Poppins', sans-serif;
-  font-weight: 700;
-  font-size: 1.1rem;
-  color: var(--text);
-  margin: 0 0 12px;
+.ia-stage {
+  font-family: 'Poppins', monospace;
+  font-weight: 600;
+  font-size: 0.62rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accentbtn);
+  white-space: nowrap;
 }
 
-.infra-process-card-desc {
+.ia-card-title {
   font-family: 'Poppins', sans-serif;
-  font-size: 0.88rem;
-  line-height: 1.7;
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1.35;
+  color: var(--text);
+  margin: 0 0 8px;
+}
+
+.ia-card-desc {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.8rem;
+  line-height: 1.65;
   color: var(--text-secondary);
   margin: 0;
+}
+
+/* leader lines from card to station (callout style) */
+.ia-leader {
+  position: absolute;
+  left: 50%;
+  width: 1px;
+  transform: translateX(-50%);
+}
+
+.ia-step--up .ia-leader {
+  bottom: calc(50% + 13px);
+  height: 51px;
+  background: linear-gradient(
+    to top,
+    rgba(4, 140, 182, 0.6),
+    rgba(4, 140, 182, 0.08)
+  );
+}
+
+.ia-step--down .ia-leader {
+  top: calc(50% + 13px);
+  height: 51px;
+  background: linear-gradient(
+    to bottom,
+    rgba(4, 140, 182, 0.6),
+    rgba(4, 140, 182, 0.08)
+  );
+}
+
+.ia-leader::after {
+  content: "";
+  position: absolute;
+  left: -5px;
+  width: 11px;
+  height: 1px;
+  background: rgba(4, 140, 182, 0.4);
+}
+
+.ia-step--up .ia-leader::after {
+  top: 0;
+}
+
+.ia-step--down .ia-leader::after {
+  bottom: 0;
+}
+
+/* diamond survey station on the centreline */
+.ia-node {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  transform: translate(-50%, -50%) rotate(45deg);
+  border: 2px solid var(--accentbtn);
+  background: var(--navbar-bgg);
+  z-index: 2;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.ia-node-core {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accentbtn);
+}
+
+.ia-node::after {
+  content: "";
+  position: absolute;
+  inset: -7px;
+  border: 1px solid var(--accentbtn);
+  opacity: 0;
+  animation: ia-ping 2.8s ease-out infinite;
+}
+
+.ia-step:nth-child(1) .ia-node::after { animation-delay: 0s; }
+.ia-step:nth-child(2) .ia-node::after { animation-delay: 0.45s; }
+.ia-step:nth-child(3) .ia-node::after { animation-delay: 0.9s; }
+.ia-step:nth-child(4) .ia-node::after { animation-delay: 1.35s; }
+.ia-step:nth-child(5) .ia-node::after { animation-delay: 1.8s; }
+.ia-step:nth-child(6) .ia-node::after { animation-delay: 2.25s; }
+
+.ia-step:hover .ia-node {
+  transform: translate(-50%, -50%) rotate(45deg) scale(1.12);
+  box-shadow: 0 0 0 5px rgba(4, 140, 182, 0.15);
+}
+
+/* chainage label beside each station — staggered into two annotation rows
+   so adjacent labels never collide at narrow widths */
+.ia-ch {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(24px, -50%);
+  font-family: 'Poppins', monospace;
+  font-weight: 600;
+  font-size: 0.6rem;
+  letter-spacing: 0.14em;
+  color: var(--accentbtn);
+  white-space: nowrap;
+  z-index: 2;
+}
+
+.ia-ch--hi {
+  top: calc(50% - 11px);
+}
+
+.ia-ch--lo {
+  top: calc(50% + 11px);
+}
+
+.ia-ch::before {
+  content: "";
+  position: absolute;
+  left: -10px;
+  top: 50%;
+  width: 8px;
+  height: 1px;
+  background: rgba(4, 140, 182, 0.5);
+}
+
+.ia-step:last-child .ia-ch {
+  left: auto;
+  right: 50%;
+  transform: translate(-24px, -50%);
+}
+
+.ia-step:last-child .ia-ch::before {
+  left: auto;
+  right: -10px;
+}
+
+@keyframes ia-march {
+  to {
+    background-position-x: 36px;
+  }
+}
+
+@keyframes ia-march-v {
+  to {
+    background-position-y: 30px;
+  }
+}
+
+@keyframes ia-ping {
+  0% {
+    opacity: 0.7;
+    transform: scale(0.55);
+  }
+  70%,
+  100% {
+    opacity: 0;
+    transform: scale(1.5);
+  }
 }
 
 /* ============================================
@@ -777,6 +1058,37 @@ body.dark-mode .infra-process-num {
 /* ============================================
    RESPONSIVE
    ============================================ */
+@media (max-width: 1180px) {
+  /* narrower columns → tighter waypoint cards so they clear the band */
+  .ia-card {
+    width: calc(100% + 16px);
+    padding: 16px 15px 18px;
+  }
+
+  .ia-card-desc {
+    font-size: 0.77rem;
+    line-height: 1.6;
+  }
+
+  .ia-card-title {
+    font-size: 0.95rem;
+  }
+
+  .ia-stage {
+    font-size: 0.58rem;
+    letter-spacing: 0.13em;
+  }
+
+  .ia-card-icon {
+    width: 30px;
+    height: 30px;
+  }
+
+  .ia-card-ghost {
+    font-size: 2.5rem;
+  }
+}
+
 @media (max-width: 1024px) {
   .infra-hero,
   .infra-capabilities,
@@ -871,8 +1183,103 @@ body.dark-mode .infra-process-num {
     grid-template-columns: 1fr 1fr;
   }
 
-  .infra-process-grid {
-    grid-template-columns: 1fr 1fr;
+  /* chainage roadmap collapses to a vertical survey rail */
+  .infra-process-header {
+    margin-bottom: 40px;
+  }
+
+  .ia-band {
+    display: none;
+  }
+
+  .ia-steps {
+    display: block;
+    padding-left: 42px;
+  }
+
+  .ia-steps::before {
+    content: "";
+    position: absolute;
+    left: 16px;
+    top: 6px;
+    bottom: 6px;
+    width: 2px;
+    transform: translateX(-50%);
+    background: repeating-linear-gradient(
+      180deg,
+      var(--accentbtn) 0 13px,
+      transparent 13px 30px
+    );
+    opacity: 0.5;
+    animation: ia-march-v 1.1s linear infinite;
+  }
+
+  /* rail terminus — mirrors the desktop handover arrow */
+  .ia-steps::after {
+    content: "";
+    position: absolute;
+    left: 16px;
+    bottom: -4px;
+    width: 0;
+    height: 0;
+    transform: translateX(-50%);
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-top: 10px solid var(--accentbtn);
+  }
+
+  .ia-step {
+    height: auto;
+    padding-bottom: 26px;
+  }
+
+  .ia-step:last-child {
+    padding-bottom: 0;
+  }
+
+  .ia-node {
+    left: -26px;
+    top: 2px;
+    transform: translate(-50%, 0) rotate(45deg);
+  }
+
+  .ia-step:hover .ia-node {
+    transform: translate(-50%, 0) rotate(45deg) scale(1.12);
+  }
+
+  .ia-ch,
+  .ia-step:last-child .ia-ch {
+    position: static;
+    display: block;
+    transform: none;
+    margin-bottom: 8px;
+    font-size: 0.66rem;
+  }
+
+  .ia-ch::before {
+    display: none;
+  }
+
+  .ia-card {
+    position: relative;
+    left: auto;
+    width: 100%;
+    transform: none;
+  }
+
+  .ia-step--up .ia-card,
+  .ia-step--down .ia-card {
+    top: auto;
+    bottom: auto;
+  }
+
+  .ia-step--up .ia-card:hover,
+  .ia-step--down .ia-card:hover {
+    transform: translateY(-3px);
+  }
+
+  .ia-leader {
+    display: none;
   }
 
   .infra-projects-grid {
@@ -898,22 +1305,120 @@ body.dark-mode .infra-process-num {
     grid-template-columns: 1fr;
   }
 
-  .infra-process-grid {
-    grid-template-columns: 1fr;
+  .ia-steps {
+    padding-left: 38px;
+  }
+
+  .ia-steps::before {
+    left: 13px;
+  }
+
+  .ia-steps::after {
+    left: 13px;
+  }
+
+  .ia-node {
+    left: -25px;
+  }
+
+  .ia-step {
+    padding-bottom: 22px;
+  }
+
+  .ia-card {
+    padding: 15px 14px 17px;
   }
 
   .infra-projects-grid {
     grid-template-columns: 1fr;
   }
+
+  /* hero: plates stack cleanly below 640px */
+  .infra-hero {
+    padding: 72px 18px 60px;
+  }
+
+  .infra-hero-visual {
+    padding-bottom: 0;
+  }
+
+  .infra-sheet {
+    max-width: 100%;
+    padding-top: 30px;
+  }
+
+  .infra-sheet::before,
+  .infra-sheet::after {
+    display: none;
+  }
+
+  .infra-dim {
+    left: 4%;
+    right: 4%;
+  }
+
+  .infra-dim-label {
+    font-size: 9px;
+    letter-spacing: 0.1em;
+  }
+
+  .infra-shot--inset {
+    position: static;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    margin-top: 14px;
+    box-shadow: none;
+    border-color: var(--border);
+  }
+
+  .infra-hud {
+    position: static;
+    width: 100%;
+    margin-top: 14px;
+    box-shadow: none;
+    right: auto;
+    bottom: auto;
+  }
+
+  .infra-hero-meta {
+    gap: 8px;
+  }
+
+  .infra-meta-chip {
+    font-size: 10px;
+    padding: 6px 10px 6px 22px;
+  }
+
+  .infra-hero-actions {
+    flex-wrap: wrap;
+    gap: 16px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .infra-cap-card,
-  .infra-process-card,
   .infra-project-item,
   .infra-result,
   .infra-hero-text-link {
     transition: none;
     transform: none;
+  }
+
+  /* keep layout transforms (centring/rotation), drop only the motion */
+  .ia-card,
+  .ia-node {
+    transition: none;
+  }
+
+  .infra-hero::before,
+  .infra-shot img,
+  .infra-marker::after,
+  .infra-dim-bar,
+  .infra-hud-track i,
+  .infra-hud-live i,
+  .ia-band-center,
+  .ia-steps::before,
+  .ia-node::after {
+    animation: none;
   }
 }

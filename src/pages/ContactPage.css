@@ -152,6 +152,7 @@
   font-weight: 600;
   color: var(--text);
   margin-bottom: 6px;
+  overflow-wrap: anywhere;
 }
 
 .contact-info-value--link {

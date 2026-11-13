@@ -20,24 +20,26 @@ const CONTACT_INFO = [
     icon: MapPin,
     label: "Visit Us",
     title: "Our Office",
-    value: "Nugegoda, Sri Lanka",
+    value: "3rd Floor, 3A, Meeghawatta Road, Nugegoda, Sri Lanka, 10250",
     detail: "Grow More Solutions (Pvt) Ltd",
+    href: "https://maps.google.com/?q=3rd+Floor,+3A,+Meeghawatta+Road,+Nugegoda,+Sri+Lanka,+10250",
+    external: true,
   },
   {
     icon: Phone,
     label: "Call Us",
     title: "Phone",
-    value: "+94 11 234 5678",
+    value: "+94 72 328 0097",
     detail: "Mon – Fri, 9:00 AM – 6:00 PM",
-    href: "tel:+94112345678",
+    href: "tel:+94723280097",
   },
   {
     icon: Mail,
     label: "Email Us",
     title: "Email",
-    value: "hello@gms.lk",
+    value: "info@growmoresolutions.lk",
     detail: "We reply within 24 hours",
-    href: "mailto:hello@gms.lk",
+    href: "mailto:info@growmoresolutions.lk",
   },
   {
     icon: Clock,
@@ -117,7 +119,13 @@ const ContactPage = () => {
               <span className="contact-info-label">{item.label}</span>
               <h3 className="contact-info-title">{item.title}</h3>
               {item.href ? (
-                <a href={item.href} className="contact-info-value contact-info-value--link">
+                <a
+                  href={item.href}
+                  className="contact-info-value contact-info-value--link"
+                  {...(item.external
+                    ? { target: "_blank", rel: "noopener noreferrer" }
+                    : {})}
+                >
                   {item.value}
                 </a>
               ) : (
@@ -247,12 +255,12 @@ const ContactPage = () => {
                 </span>
                 <h3 className="contact-map-title">Our Headquarters</h3>
                 <p className="contact-map-address">
-                  Nugegoda
+                  3rd Floor, 3A, Meeghawatta Road
                   <br />
-                  Sri Lanka
+                  Nugegoda, Sri Lanka, 10250
                 </p>
                 <a
-                  href="https://maps.google.com/?q=Nugegoda,+Sri+Lanka"
+                  href="https://maps.google.com/?q=3rd+Floor,+3A,+Meeghawatta+Road,+Nugegoda,+Sri+Lanka,+10250"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="contact-map-link"

@@ -1,6 +1,6 @@
 import React from "react";
 // eslint-disable-next-line no-unused-vars -- motion is used via <motion.div> JSX member expressions
-import { motion } from "motion/react";
+import { motion, useReducedMotion } from "motion/react";
 import {
   Map,
   LayoutGrid,
@@ -58,7 +58,7 @@ const PROCESS = [
     icon: Search,
     num: "01",
     title: "Survey & Site Assessment",
-    desc: "Site visits, boundary checks, and physical site conditions documented to establish the planning baseline.",
+    desc: "Site visits, and physical site conditions documented to establish the planning baseline.",
   },
   {
     icon: BarChart3,
@@ -76,7 +76,7 @@ const PROCESS = [
     icon: LayoutGrid,
     num: "04",
     title: "Master Plan Development",
-    desc: "Detailed plans, drawings, and documentation produced for the chosen concept and preferred direction.",
+    desc: "Detailed plans, drawings, and documentation produced for the chosen concept and direction.",
   },
   {
     icon: ClipboardCheck,
@@ -114,6 +114,133 @@ const fadeUp = (delay = 0) => ({
   transition: { duration: 0.6, delay },
   viewport: { amount: 0.3 },
 });
+
+/* Our Process — drawn as a phased plan sheet: a route that snakes through a
+   3 x 2 parcel grid, framed like a real drawing (graph paper, registration
+   marks, north arrow, title block). */
+const MasterPlanningProcess = () => {
+  const reduceMotion = useReducedMotion();
+
+  const mpIn = (delay) =>
+    reduceMotion
+      ? {}
+      : {
+          initial: { opacity: 0, y: 24 },
+          whileInView: { opacity: 1, y: 0 },
+          transition: { duration: 0.5, delay, ease: [0.16, 1, 0.3, 1] },
+          viewport: { amount: 0.3 },
+        };
+
+  // route lines plot themselves in (transform origin set in CSS)
+  const mppLineX = (delay) =>
+    reduceMotion
+      ? {}
+      : {
+          initial: { scaleX: 0 },
+          whileInView: { scaleX: 1 },
+          transition: { duration: 0.6, delay, ease: [0.16, 1, 0.3, 1] },
+          viewport: { amount: 0 },
+        };
+
+  const mppLineY = (delay) =>
+    reduceMotion
+      ? {}
+      : {
+          initial: { scaleY: 0 },
+          whileInView: { scaleY: 1 },
+          transition: { duration: 0.45, delay, ease: [0.16, 1, 0.3, 1] },
+          viewport: { amount: 0 },
+        };
+
+  // one parcel cell; reveal staggers in route order (row 2 runs right to left)
+  const mppCell = (step, i, row) => (
+    <motion.div
+      key={step.num}
+      className="mpp-cell"
+      style={row === "bottom" ? { order: 3 - i } : undefined}
+      {...mpIn(row === "top" ? 0.4 + i * 0.12 : 1.05 + i * 0.12)}
+    >
+      <span className="mpp-node" aria-hidden="true">
+        <span className="mpp-node-core" />
+      </span>
+      <span className="mpp-tag" aria-hidden="true">
+        {step.num}
+      </span>
+      <div className="mpp-card">
+        <div className="mpp-card-bar">
+          <span className="mpp-phase">Phase {step.num}</span>
+          <span className="mpp-swatch" aria-hidden="true" />
+        </div>
+        <span className="mpp-card-icon">
+          <step.icon size={18} strokeWidth={1.8} />
+        </span>
+        <h4 className="mpp-card-title">{step.title}</h4>
+        <p className="mpp-card-desc">{step.desc}</p>
+      </div>
+    </motion.div>
+  );
+
+  return (
+    <section className="mp-process">
+      <div className="mp-process-inner">
+        <motion.div className="mp-process-header" {...mpIn(0.1)}>
+          <span className="mp-eyebrow">
+            <span className="mp-eyebrow-dot" />
+            Our Process
+          </span>
+          <h2 className="mp-process-title">
+            How We <span className="mp-hero-accent">Plan</span>
+          </h2>
+        </motion.div>
+
+        <motion.div className="mpp-sheet" {...mpIn(0.15)}>
+          <span className="mpp-reg mpp-reg--tl" aria-hidden="true" />
+          <span className="mpp-reg mpp-reg--tr" aria-hidden="true" />
+          <span className="mpp-reg mpp-reg--bl" aria-hidden="true" />
+          <span className="mpp-reg mpp-reg--br" aria-hidden="true" />
+          <span className="mpp-north" aria-hidden="true">
+            <span className="mpp-north-arrow" />N
+          </span>
+
+          <div className="mpp-rows">
+            <div className="mpp-row mpp-row--top">
+              <motion.span
+                className="mpp-axis"
+                aria-hidden="true"
+                {...mppLineX(0.3)}
+              />
+              <motion.span
+                className="mpp-bend"
+                aria-hidden="true"
+                {...mppLineY(0.75)}
+              />
+              <span className="mpp-origin" aria-hidden="true" />
+              {PROCESS.slice(0, 3).map((step, i) => mppCell(step, i, "top"))}
+            </div>
+            <div className="mpp-row mpp-row--bottom">
+              <motion.span
+                className="mpp-axis mpp-axis--rev"
+                aria-hidden="true"
+                {...mppLineX(1)}
+              />
+              <span className="mpp-exit" aria-hidden="true" />
+              {PROCESS.slice(3).map((step, i) => mppCell(step, i, "bottom"))}
+            </div>
+          </div>
+
+          <div className="mpp-block">
+            <span className="mpp-block-cell mpp-block-cell--id">
+              GMS — Grow More Solutions
+            </span>
+            <span className="mpp-block-cell">Master Plan Process</span>
+            <span className="mpp-block-cell">Scale 1:500</span>
+            <span className="mpp-block-cell">Sheet MP-101</span>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+};
 
 const MasterPlanningPage = () => (
   <div>
@@ -231,39 +358,7 @@ const MasterPlanningPage = () => (
     </section>
 
     {/* ============ PROCESS ============ */}
-    <section className="mp-process">
-      <div className="mp-process-inner">
-        <motion.div className="mp-process-header" {...fadeUp(0.1)}>
-          <span className="mp-eyebrow">
-            <span className="mp-eyebrow-dot" />
-            Our Process
-          </span>
-          <h2 className="mp-process-title">
-            How We <span className="mp-hero-accent">Plan</span>
-          </h2>
-        </motion.div>
-
-        <div className="mp-process-grid">
-          {PROCESS.map((step, i) => (
-            <motion.div
-              key={step.num}
-              className="mp-process-card"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: i * 0.08 }}
-              viewport={{ amount: 0.3 }}
-            >
-              <span className="mp-process-num">{step.num}</span>
-              <span className="mp-process-icon">
-                <step.icon size={20} strokeWidth={1.8} />
-              </span>
-              <h4 className="mp-process-card-title">{step.title}</h4>
-              <p className="mp-process-card-desc">{step.desc}</p>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-    </section>
+    <MasterPlanningProcess />
 
     {/* ============ PLATFORM ============ */}
     <PlatformFeatures />

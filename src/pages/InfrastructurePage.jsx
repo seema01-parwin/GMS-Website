@@ -59,36 +59,42 @@ const PROCESS = [
   {
     icon: ClipboardCheck,
     num: "01",
+    ch: "0+000",
     title: "Investigation & Analysis",
     desc: "Geotechnical surveys, environmental impact assessments, and site condition analysis to establish project parameters.",
   },
   {
     icon: Compass,
     num: "02",
+    ch: "0+180",
     title: "Design & Engineering",
     desc: "Structural calculations, CAD drawings, materials specifications, and value engineering for cost optimisation.",
   },
   {
     icon: HardHat,
     num: "03",
+    ch: "0+360",
     title: "Procurement & Mobilisation",
     desc: "Material sourcing, equipment deployment, labour coordination, and site preparation ahead of construction.",
   },
   {
     icon: Truck,
     num: "04",
+    ch: "0+540",
     title: "Construction",
     desc: "Phased execution with daily progress tracking, safety compliance, and quality checkpoints at every milestone.",
   },
   {
     icon: BarChart3,
     num: "05",
+    ch: "0+720",
     title: "Supervision & Monitoring",
     desc: "On-site resident engineers, real-time progress reporting, and corrective action protocols to keep projects on track.",
   },
   {
     icon: ShieldCheck,
     num: "06",
+    ch: "0+900",
     title: "Handover & Support",
     desc: "As-built documentation, defect liability management, and ongoing maintenance support post-completion.",
   },
@@ -138,6 +144,27 @@ const InfrastructurePage = () => {
           animate: { opacity: 1, y: 0 },
           transition: { duration: 0.7, delay, ease: [0.16, 1, 0.3, 1] },
         };
+
+  // scroll-in for the chainage roadmap stations
+  const iaIn = (delay) =>
+    reduceMotion
+      ? {}
+      : {
+          initial: { opacity: 0, y: 26 },
+          whileInView: { opacity: 1, y: 0 },
+          transition: { duration: 0.55, delay, ease: [0.16, 1, 0.3, 1] },
+          viewport: { amount: 0.25 },
+        };
+
+  // the road band draws itself in from the origin stake
+  const iaBandIn = reduceMotion
+    ? {}
+    : {
+        initial: { scaleX: 0 },
+        whileInView: { scaleX: 1 },
+        transition: { duration: 0.9, ease: [0.16, 1, 0.3, 1] },
+        viewport: { amount: 0.3 },
+      };
 
   return (
     <div>
@@ -203,7 +230,7 @@ const InfrastructurePage = () => {
                 <span className="infra-shot-tint" aria-hidden="true" />
                 <span className="infra-marker infra-marker--a" aria-hidden="true" />
                 <span className="infra-marker infra-marker--b" aria-hidden="true" />
-                <span className="infra-shot-tag">Site Plan 01 / Colombo</span>
+                <span className="infra-shot-tag">Site Plan 01 </span>
               </div>
 
               <div className="infra-shot infra-shot--inset">
@@ -306,7 +333,7 @@ const InfrastructurePage = () => {
         </div>
       </section>
 
-      {/* ============ PROCESS ============ */}
+      {/* ============ PROCESS — survey chainage roadmap ============ */}
       <section className="infra-process">
         <div className="infra-process-inner">
           <motion.div className="infra-process-header" {...fadeUp(0.1)}>
@@ -319,24 +346,46 @@ const InfrastructurePage = () => {
             </h2>
           </motion.div>
 
-          <div className="infra-process-grid">
-            {PROCESS.map((step, i) => (
-              <motion.div
-                key={step.num}
-                className="infra-process-card"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: i * 0.08 }}
-                viewport={{ amount: 0.3 }}
-              >
-                <span className="infra-process-num">{step.num}</span>
-                <span className="infra-process-icon">
-                  <step.icon size={20} strokeWidth={1.8} />
-                </span>
-                <h4 className="infra-process-card-title">{step.title}</h4>
-                <p className="infra-process-card-desc">{step.desc}</p>
-              </motion.div>
-            ))}
+          <div className="ia-road">
+            <motion.div className="ia-band" aria-hidden="true" {...iaBandIn}>
+              <span className="ia-band-center" />
+              <span className="ia-band-stake" />
+              <span className="ia-band-arrow" />
+            </motion.div>
+
+            <div className="ia-steps">
+              {PROCESS.map((step, i) => (
+                <motion.div
+                  key={step.num}
+                  className={`ia-step ${i % 2 === 0 ? "ia-step--up" : "ia-step--down"}`}
+                  {...iaIn(0.12 + i * 0.09)}
+                >
+                  <span
+                    className={`ia-ch ${i % 2 === 0 ? "ia-ch--hi" : "ia-ch--lo"}`}
+                    aria-hidden="true"
+                  >
+                    CH {step.ch}
+                  </span>
+                  <div className="ia-card">
+                    <span className="ia-card-ghost" aria-hidden="true">
+                      {step.num}
+                    </span>
+                    <div className="ia-card-head">
+                      <span className="ia-card-icon">
+                        <step.icon size={17} strokeWidth={1.8} />
+                      </span>
+                      <span className="ia-stage">Stage {step.num}</span>
+                    </div>
+                    <h4 className="ia-card-title">{step.title}</h4>
+                    <p className="ia-card-desc">{step.desc}</p>
+                  </div>
+                  <span className="ia-leader" aria-hidden="true" />
+                  <span className="ia-node" aria-hidden="true">
+                    <span className="ia-node-core" />
+                  </span>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </div>
       </section>

@@ -1011,15 +1011,21 @@ a.nw-contact-row:hover {
   }
 
   .nw-row {
-    grid-template-columns: 1fr 44px;
+    grid-template-columns: minmax(0, 1fr) 44px;
   }
 
   .nw-row-gutter {
+    grid-column: 1 / -1;
     flex-direction: row;
     align-items: baseline;
     gap: 12px;
     border-right: none;
     padding-top: 0;
+    margin-bottom: 4px;
+  }
+
+  .nw-row-body {
+    min-width: 0;
   }
 }
 

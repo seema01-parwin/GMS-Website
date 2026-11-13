@@ -239,7 +239,7 @@
   margin: 0 auto;
   padding: 84px 2rem 96px;
   display: grid;
-  grid-template-columns: 272px 1fr;
+  grid-template-columns: 272px minmax(0, 1fr);
   gap: 64px;
   align-items: start;
 }
@@ -251,6 +251,7 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
+  min-width: 0;
 }
 
 .legal-toc-eyebrow {
@@ -711,7 +712,7 @@
    ======================================================= */
 @media (max-width: 992px) {
   .legal-body {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: 48px;
     padding: 64px 2rem 80px;
   }
@@ -719,6 +720,7 @@
   .legal-toc {
     position: static;
     gap: 12px;
+    min-width: 0;
   }
 
   .legal-toc-list {
@@ -726,6 +728,8 @@
     gap: 8px;
     overflow-x: auto;
     padding-bottom: 8px;
+    min-width: 0;
+    -webkit-overflow-scrolling: touch;
   }
 
   .legal-toc-link {

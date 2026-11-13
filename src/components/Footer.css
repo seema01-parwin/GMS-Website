@@ -218,6 +218,7 @@
     color: var(--footer-text-muted);
     text-decoration: none;
     transition: color .2s;
+    overflow-wrap: anywhere;
 }
 
 a.footer-contact-value:hover {

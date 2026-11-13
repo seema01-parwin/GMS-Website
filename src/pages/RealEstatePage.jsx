@@ -30,9 +30,9 @@ import propertyTwo from "../assets/City Centre Retail Space.jpg";
 import propertyThree from "../assets/Rental Investment Unit.jpg";
 import propertyFour from "../assets/Residential Plot.jpg";
 import propertyFive from "../assets/Real-Estate1.jpg";
-import masterImg from "../assets/services/master-planning.jpg";
-import interiorImg from "../assets/services/interior-design.jpg";
-import infraImg from "../assets/services/infrastructure.jpg";
+import masterImg from "../assets/Land & Master Planning.jpg";
+import interiorImg from "../assets/Interiors & Fit-Out.jpg";
+import infraImg from "../assets/Roads & Utilities.jpg";
 import "./RealEstatePage.css";
 
 const LOCATIONS = [

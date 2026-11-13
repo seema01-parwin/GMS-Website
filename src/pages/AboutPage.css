@@ -1111,8 +1111,13 @@
   }
 
   .about-leadership-grid {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 20px;
+  }
+
+  .about-leadership-card {
+    min-width: 0;
+    padding: 32px 20px 28px;
   }
 
   .about-brands {
@@ -1190,6 +1195,10 @@
   .about-leadership-avatar {
     width: 64px;
     height: 64px;
+  }
+
+  .about-leadership-grid {
+    grid-template-columns: 1fr;
   }
 
   .about-leadership-initial {

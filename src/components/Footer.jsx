@@ -122,21 +122,23 @@ const Footer = () => {
                   <span className="footer-contact-icon"><MapPin size={15} strokeWidth={1.8} /></span>
                   <div>
                     <span className="footer-contact-label">Office</span>
-                    <span className="footer-contact-value">Nugegoda, Sri Lanka</span>
+                    <span className="footer-contact-value">
+                      3rd Floor, 3A, Meeghawatta Road, Nugegoda, Sri Lanka, 10250
+                    </span>
                   </div>
                 </li>
                 <li className="footer-contact-item">
                   <span className="footer-contact-icon"><Phone size={15} strokeWidth={1.8} /></span>
                   <div>
                     <span className="footer-contact-label">Phone</span>
-                    <a href="tel:+94112345678" className="footer-contact-value">+94 11 234 5678</a>
+                    <a href="tel:+94723280097" className="footer-contact-value">+94 72 328 0097</a>
                   </div>
                 </li>
                 <li className="footer-contact-item">
                   <span className="footer-contact-icon"><Mail size={15} strokeWidth={1.8} /></span>
                   <div>
                     <span className="footer-contact-label">Email</span>
-                    <a href="mailto:hello@gms.lk" className="footer-contact-value">hello@gms.lk</a>
+                    <a href="mailto:info@growmoresolutions.lk" className="footer-contact-value">info@growmoresolutions.lk</a>
                   </div>
                 </li>
               </ul>

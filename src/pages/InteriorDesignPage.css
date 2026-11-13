@@ -38,7 +38,7 @@
    ============================================ */
 .id-hero {
   background: var(--bg);
-  padding: 100px 4rem 80px;
+  padding: 50px 4rem 80px;
 }
 
 .id-hero-inner {
@@ -273,7 +273,7 @@
    RESULTS BAR
    ============================================ */
 .id-results {
-  background: var(--navbar-bgg);
+  background: var(--bg);
   padding: 0 4rem;
 }
 
@@ -283,7 +283,7 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   border: 1px solid var(--border);
-  background: var(--card-bg);
+  background: var(--navbar-bgg);
 }
 
 .id-result {

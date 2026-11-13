@@ -258,7 +258,7 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   border: 1px solid var(--border);
-  background: var(--card-bg);
+  background: var(--navbar-bgg);
 }
 
 .mk-result {
@@ -1176,6 +1176,7 @@ body.dark-mode .mk-road-num {
   }
 
   .mk-road-card {
+    width: auto;
     margin-top: 34px;
     margin-left: 28px;
     padding: 18px 14px;

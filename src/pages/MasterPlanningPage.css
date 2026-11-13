@@ -38,7 +38,7 @@
    ============================================ */
 .mp-hero {
   background: var(--bg);
-  padding: 100px 4rem 80px;
+  padding: 50px 4rem 80px;
 }
 
 .mp-hero-inner {
@@ -225,7 +225,7 @@
 
 .mp-plan-badge {
   position: absolute;
-  top: 16px;
+  top: 6px;
   right: 16px;
   display: flex;
   align-items: center;
@@ -244,7 +244,7 @@
    RESULTS BAR
    ============================================ */
 .mp-results {
-  background: var(--navbar-bgg);
+  background: var(--bg);
   padding: 0 4rem;
 }
 
@@ -254,7 +254,7 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   border: 1px solid var(--border);
-  background: var(--card-bg);
+  background: var(--navbar-bgg);
 }
 
 .mp-result {
@@ -378,7 +378,7 @@
 }
 
 /* ============================================
-   PROCESS
+   PROCESS — phased plan sheet roadmap
    ============================================ */
 .mp-process {
   background: var(--navbar-bgg);
@@ -405,68 +405,312 @@
   line-height: 1.15;
 }
 
-.mp-process-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-}
-
-.mp-process-card {
+/* --- drawing sheet frame --- */
+.mpp-sheet {
+  --mpp-pad: 40px;
   position: relative;
   border: 1px solid var(--border);
-  background: var(--card-bg);
-  padding: 36px 28px;
-  transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+  background: var(--bg);
+  padding: 56px var(--mpp-pad) 0;
 }
 
-.mp-process-card:hover {
-  border-color: rgba(4, 140, 182, 0.35);
-  transform: translateY(-4px);
-  box-shadow: 0 16px 40px rgba(4, 140, 182, 0.1);
-}
-
-.mp-process-num {
+/* graph paper */
+.mpp-sheet::before {
+  content: "";
   position: absolute;
-  top: 16px;
-  right: 20px;
-  font-family: 'Poppins', monospace;
-  font-weight: 700;
-  font-size: 2.5rem;
-  line-height: 1;
-  color: rgba(4, 140, 182, 0.08);
+  inset: 0;
+  background:
+    linear-gradient(var(--border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border) 1px, transparent 1px);
+  background-size: 24px 24px;
+  opacity: 0.45;
+  mask-image: radial-gradient(ellipse at center, black 0%, transparent 85%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 0%, transparent 85%);
   pointer-events: none;
+  z-index: 0;
 }
 
-body.dark-mode .mp-process-num {
-  color: rgba(56, 189, 248, 0.1);
+/* corner registration marks */
+.mpp-reg {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  opacity: 0.55;
+  background:
+    linear-gradient(var(--accentbtn), var(--accentbtn)) center / 100% 1px no-repeat,
+    linear-gradient(var(--accentbtn), var(--accentbtn)) center / 1px 100% no-repeat;
+  z-index: 2;
 }
 
-.mp-process-icon {
+.mpp-reg--tl { top: 9px; left: 9px; }
+.mpp-reg--tr { top: 9px; right: 9px; }
+.mpp-reg--bl { bottom: 9px; left: 9px; }
+.mpp-reg--br { bottom: 9px; right: 9px; }
+
+/* north arrow */
+.mpp-north {
+  position: absolute;
+  top: 14px;
+  right: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  font-family: 'Poppins', monospace;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--text-secondary);
+  opacity: 0.75;
+  z-index: 2;
+}
+
+.mpp-north-arrow {
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-bottom: 12px solid var(--accentbtn);
+}
+
+/* --- snaking route through the parcel grid --- */
+.mpp-rows {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 56px; /* the U-turn bend spans exactly this gap */
+}
+
+.mpp-row {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) 40px; /* last col = bend channel */
+}
+
+.mpp-axis {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 19px;
+  height: 2px;
+  background: var(--accentbtn);
+  opacity: 0.55;
+  transform-origin: left center;
+  z-index: 1;
+}
+
+.mpp-axis--rev {
+  transform-origin: right center;
+}
+
+/* U-turn into the second row, in the right-hand channel */
+.mpp-bend {
+  position: absolute;
+  top: 0;
+  right: 19px;
+  bottom: -56px;
+  width: 2px;
+  background: var(--accentbtn);
+  opacity: 0.55;
+  transform-origin: top center;
+  z-index: 1;
+}
+
+/* route entry: origin monument */
+.mpp-origin {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  transform: translate(0, -50%);
+  background: var(--accentbtn);
+  z-index: 2;
+}
+
+/* route exit: arrowhead pointing left */
+.mpp-exit {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  transform: translateY(-50%);
+  border-top: 7px solid transparent;
+  border-bottom: 7px solid transparent;
+  border-right: 10px solid var(--accentbtn);
+  z-index: 2;
+}
+
+/* --- parcel cell --- */
+.mpp-cell {
+  position: relative;
+  z-index: 2;
+}
+
+/* square survey node centred on the row axis */
+.mpp-node {
+  position: absolute;
+  top: 0;
+  left: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 44px;
-  height: 44px;
-  border: 1px solid rgba(4, 140, 182, 0.2);
-  background: rgba(4, 140, 182, 0.06);
-  color: var(--accentbtn);
-  margin-bottom: 20px;
+  width: 18px;
+  height: 18px;
+  transform: translate(-50%, -50%);
+  border: 2px solid var(--accentbtn);
+  background: var(--bg);
+  z-index: 3;
+  transition: background 0.3s;
 }
 
-.mp-process-card-title {
+.mpp-node-core {
+  width: 6px;
+  height: 6px;
+  background: var(--accentbtn);
+  transition: background 0.3s;
+}
+
+.mpp-cell:hover .mpp-node {
+  background: var(--accentbtn);
+}
+
+.mpp-cell:hover .mpp-node-core {
+  background: var(--bg);
+}
+
+/* station number beside the node, following route direction */
+.mpp-tag {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(22px, -50%);
+  font-family: 'Poppins', monospace;
+  font-weight: 700;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: var(--accentbtn);
+  z-index: 3;
+}
+
+.mpp-row--bottom .mpp-tag {
+  transform: translate(calc(-100% - 22px), -50%);
+}
+
+/* --- parcel card --- */
+.mpp-card {
+  position: relative;
+  margin-top: 30px;
+  border: 1px solid var(--border);
+  background: var(--card-bg);
+  padding: 0 18px 20px;
+  transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+.mpp-card:hover {
+  border-color: rgba(4, 140, 182, 0.4);
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(4, 140, 182, 0.12);
+}
+
+.mpp-card-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin: 0 -18px 14px;
+  padding: 9px 14px;
+  border-bottom: 1px solid var(--border);
+  background: var(--accent-bg);
+}
+
+.mpp-phase {
+  font-family: 'Poppins', monospace;
+  font-weight: 700;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accentbtn);
+}
+
+/* zoning hatch swatch */
+.mpp-swatch {
+  flex: none;
+  width: 20px;
+  height: 12px;
+  border: 1px solid rgba(4, 140, 182, 0.45);
+  background: repeating-linear-gradient(
+    45deg,
+    rgba(4, 140, 182, 0.4) 0 2px,
+    transparent 2px 5px
+  );
+}
+
+.mpp-card-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: 1px solid rgba(4, 140, 182, 0.22);
+  background: rgba(4, 140, 182, 0.07);
+  color: var(--accentbtn);
+  margin-bottom: 14px;
+}
+
+.mpp-card-title {
   font-family: 'Poppins', 'Poppins', sans-serif;
   font-weight: 700;
-  font-size: 1.1rem;
+  font-size: 1rem;
+  line-height: 1.35;
   color: var(--text);
-  margin: 0 0 12px;
+  margin: 0 0 8px;
 }
 
-.mp-process-card-desc {
+.mpp-card-desc {
   font-family: 'Poppins', sans-serif;
-  font-size: 0.88rem;
-  line-height: 1.7;
+  font-size: 0.8rem;
+  line-height: 1.65;
   color: var(--text-secondary);
   margin: 0;
+}
+
+/* --- title block (drawing footer) --- */
+.mpp-block {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 0.8fr 0.8fr;
+  margin: 40px calc(var(--mpp-pad) * -1) 0;
+  border-top: 1px solid var(--border);
+  background: var(--card-bg);
+}
+
+.mpp-block-cell {
+  padding: 11px 14px;
+  border-right: 1px solid var(--border);
+  font-family: 'Poppins', monospace;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mpp-block-cell--id {
+  padding-left: 36px;
+  color: var(--accentbtn);
+  font-weight: 700;
+}
+
+.mpp-block-cell:last-child {
+  border-right: none;
+  padding-right: 36px;
 }
 
 /* ============================================
@@ -556,6 +800,11 @@ body.dark-mode .mp-process-num {
     padding-left: 20px;
     padding-right: 20px;
   }
+
+  .mpp-sheet {
+    --mpp-pad: 24px;
+    padding-top: 48px;
+  }
 }
 
 @media (max-width: 900px) {
@@ -603,8 +852,63 @@ body.dark-mode .mp-process-num {
     grid-template-columns: 1fr 1fr;
   }
 
-  .mp-process-grid {
-    grid-template-columns: 1fr 1fr;
+  /* plan sheet collapses to a vertical route rail */
+  .mp-process-header {
+    margin-bottom: 40px;
+  }
+
+  .mpp-sheet {
+    --mpp-pad: 18px;
+    padding-top: 44px;
+  }
+
+  .mpp-rows {
+    display: block;
+    padding-left: 34px;
+  }
+
+  .mpp-rows::before {
+    content: "";
+    position: absolute;
+    left: 13px;
+    top: 6px;
+    bottom: 6px;
+    width: 2px;
+    background: var(--accentbtn);
+    opacity: 0.55;
+  }
+
+  .mpp-row {
+    display: block;
+  }
+
+  .mpp-axis,
+  .mpp-bend,
+  .mpp-origin,
+  .mpp-exit {
+    display: none;
+  }
+
+  .mpp-cell {
+    padding-bottom: 24px;
+  }
+
+  .mpp-node {
+    left: -21px;
+    top: 4px;
+    transform: translate(-50%, 0);
+  }
+
+  .mpp-tag,
+  .mpp-row--bottom .mpp-tag {
+    position: static;
+    display: block;
+    transform: none;
+    margin-bottom: 6px;
+  }
+
+  .mpp-card {
+    margin-top: 0;
   }
 
   .mp-projects-grid {
@@ -630,8 +934,54 @@ body.dark-mode .mp-process-num {
     grid-template-columns: 1fr;
   }
 
-  .mp-process-grid {
-    grid-template-columns: 1fr;
+  .mpp-sheet {
+    --mpp-pad: 14px;
+    padding-top: 40px;
+  }
+
+  .mpp-rows {
+    padding-left: 30px;
+  }
+
+  .mpp-rows::before {
+    left: 12px;
+  }
+
+  .mpp-node {
+    left: -18px;
+  }
+
+  /* title block becomes a 2 x 2 grid */
+  .mpp-block {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .mpp-block-cell {
+    padding: 9px 10px;
+    border-top: 1px solid var(--border);
+    white-space: normal;
+    line-height: 1.5;
+  }
+
+  .mpp-block-cell:nth-child(-n + 2) {
+    border-top: none;
+  }
+
+  .mpp-block-cell:nth-child(2n) {
+    border-right: none;
+  }
+
+  .mpp-block-cell--id {
+    padding-left: 26px;
+  }
+
+  /* bottom row sits under the corner registration marks — keep text clear */
+  .mpp-block-cell:nth-child(3) {
+    padding-left: 26px;
+  }
+
+  .mpp-block-cell:last-child {
+    padding-right: 26px;
   }
 
   .mp-projects-grid {
@@ -641,11 +991,17 @@ body.dark-mode .mp-process-num {
 
 @media (prefers-reduced-motion: reduce) {
   .mp-cap-card,
-  .mp-process-card,
+  .mpp-card,
   .mp-project-item,
   .mp-result,
   .mp-hero-text-link {
     transition: none;
     transform: none;
+  }
+
+  /* keep the node's centring transform — drop only the transition */
+  .mpp-node,
+  .mpp-node-core {
+    transition: none;
   }
 }

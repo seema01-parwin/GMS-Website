@@ -1,182 +1,197 @@
-import React, { useRef } from "react";
-// eslint-disable-next-line no-unused-vars -- motion is used via <motion.div> JSX member expressions
-import { motion, useScroll, useTransform } from "motion/react";
-import { hoverTag, hoverScale } from "../utils/animations";
-import globeImg from "../assets/globe-network1.png";
+import React, { useEffect, useRef } from "react";
+// eslint-disable-next-line no-unused-vars -- motion is used via <motion.*> JSX member expressions
+import { motion, useReducedMotion } from "motion/react";
+import { Link } from "react-router-dom";
+import { ArrowUpRight } from "lucide-react";
+import { SERVICES } from "../data/constants";
+import { EASE } from "../utils/animations";
 import "./Hero.css";
 
-const Hero = () => {
-  const heroRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: heroRef,
-    offset: ["start start", "end start"],
-  });
+// One clip per service — filenames match the service links
+// (e.g. "/master-planning" -> master-planning.mp4).
+import softwareVid from "../assets/src_v/software.mp4";
+import marketingVid from "../assets/src_v/marketing.mp4";
+import graphicVid from "../assets/src_v/graphic-design.mp4";
+import infrastructureVid from "../assets/src_v/infrastructure.mp4";
+import planningVid from "../assets/src_v/master-planning.mp4";
+import interiorVid from "../assets/src_v/interior-design.mp4";
+import realEstateVid from "../assets/src_v/real-estate.mp4";
+import bpoVid from "../assets/src_v/bpo.mp4";
+import ecommerceVid from "../assets/src_v/ecommerce.mp4";
+import gemstoneVid from "../assets/src_v/gem_vid.mp4";
 
-  const heroTextY = useTransform(scrollYProgress, [0, 1], [0, 80]);
-  const heroVisualY = useTransform(scrollYProgress, [0, 1], [0, -60]);
-  const heroVisualScale = useTransform(scrollYProgress, [0, 1], [1, 0.92]);
-  const heroOpacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
+const VIDEOS = {
+  software: softwareVid,
+  marketing: marketingVid,
+  graphic: graphicVid,
+  infrastructure: infrastructureVid,
+  planning: planningVid,
+  interior: interiorVid,
+  realestate: realEstateVid,
+  bpo: bpoVid,
+  ecommerce: ecommerceVid,
+  gemstone: gemstoneVid,
+};
+
+// All 10 services, split across the two drifting rows (top 5 / bottom 5).
+const ROW_ONE = SERVICES.slice(0, 5);
+const ROW_TWO = SERVICES.slice(5);
+
+const pad = (value) => String(value).padStart(2, "0");
+
+const ServiceCard = ({ service, number, duplicate }) => {
+  const videoRef = useRef(null);
+
+  // The clips are large, so a card only fetches and decodes its video while
+  // it is close to the viewport — everything else rests on the poster image.
+  useEffect(() => {
+    const video = videoRef.current;
+    const src = VIDEOS[service.key];
+    if (video) video.dataset.fx = "ran";
+    if (!video || !src) {
+      if (video) video.dataset.fx = src ? "noRef" : `noSrc:${service.key}`;
+      return undefined;
+    }
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      video.dataset.fx = "reduced";
+      return undefined; // static posters only
+    }
+
+    const attach = () => {
+      if (!video.src) {
+        video.src = src;
+        video.load();
+      }
+      video.muted = true;
+      video.defaultMuted = true;
+      const started = video.play();
+      if (started) started.catch(() => {});
+      video.dataset.fx = `attached:${video.readyState}`;
+    };
+
+    const release = () => {
+      video.pause();
+      if (video.src) {
+        video.removeAttribute("src");
+        video.load(); // frees the buffered media + decoder
+        video.dataset.fx = "released";
+      }
+    };
+
+    const observer = new IntersectionObserver(
+      (entries) =>
+        entries.forEach((entry) => (entry.isIntersecting ? attach() : release())),
+      { rootMargin: "120px 300px", threshold: 0 }
+    );
+
+    // Cards already in view on mount start immediately, without waiting for
+    // the observer's first (frame-driven) callback.
+    const rect = video.getBoundingClientRect();
+    video.dataset.rect = `${Math.round(rect.left)},${Math.round(rect.top)},${Math.round(rect.right)},${Math.round(rect.bottom)}`;
+    if (
+      rect.right > -300 &&
+      rect.left < window.innerWidth + 300 &&
+      rect.bottom > -120 &&
+      rect.top < window.innerHeight + 120
+    ) {
+      attach();
+      video.dataset.fx = video.dataset.fx ?? "mountAttached";
+    } else {
+      video.dataset.fx = "mountOutOfView";
+    }
+
+    observer.observe(video);
+    video.dataset.fx = `${video.dataset.fx}|observed`;
+
+    return () => {
+      observer.disconnect();
+      release();
+    };
+  }, [service.key]);
 
   return (
-    <section className="hero" ref={heroRef}>
-      <motion.div
-        className="hero-inner"
-        style={{ opacity: heroOpacity }}
-      >
-        {/* LEFT: text */}
-        <div className="hero-text">
-          <motion.h1
-            initial={{ opacity: 0, y: 40, x: -30 }}
-            whileInView={{ opacity: 1, y: 0, x: 0 }}
-            transition={{ duration: 0.7, ease: "easeOut" }}
-            viewport={{ amount: 0.3 }}
-            style={{ y: heroTextY }}
-          >
-            Transforming <br />
-            <span className="hero-highlight"> Ideas Into </span> <br />
-            Innovation.
-          </motion.h1>
+    <Link
+      className={`hero-card${duplicate ? " hero-card-dup" : ""}`}
+      to={service.link}
+      aria-hidden={duplicate || undefined}
+      tabIndex={duplicate ? -1 : undefined}
+    >
+      <video
+        ref={videoRef}
+        className="hero-card-media"
+        poster={service.image}
+        muted
+        loop
+        playsInline
+        preload="none"
+        aria-hidden="true"
+        tabIndex={-1}
+      />
+      <span className="hero-card-shade" aria-hidden="true" />
+      <span className="hero-card-meta">
+        <span className="hero-card-index">{pad(number)}</span>
+        <span className="hero-card-title">{service.label}</span>
+      </span>
+      <span className="hero-card-go" aria-hidden="true">
+        <ArrowUpRight size={15} strokeWidth={2.4} />
+      </span>
+    </Link>
+  );
+};
 
-          <motion.p
-            className="hero-sub"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.15, ease: "easeOut" }}
-            viewport={{ amount: 0.3 }}
-            style={{ y: heroTextY }}
-          >
-            The end-to-end partner Sri Lankan businesses rely on — built
-            for infrastructure, design, and digital growth, from
-            blueprint to delivery.
-          </motion.p>
+// One endless strip: the card set is rendered twice so the -50% loop is seamless.
+const MarqueeRow = ({ items, offset, reverse }) => (
+  <div className="hero-row">
+    <div className={`hero-track${reverse ? " hero-track-reverse" : ""}`}>
+      {[...items, ...items].map((service, i) => (
+        <ServiceCard
+          key={`${service.key}-${i}`}
+          service={service}
+          number={offset + (i % items.length) + 1}
+          duplicate={i >= items.length}
+        />
+      ))}
+    </div>
+  </div>
+);
 
-          <motion.div
-            className="hero-tags"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            viewport={{ amount: 0.3 }}
-          >
-            <motion.span
-              className="feature-tag tag-orange"
-              {...hoverTag}
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.4, delay: 0.35 }}
-              viewport={{ amount: 0.5 }}
-            >Infrastructure</motion.span>
-            <motion.span
-              className="feature-tag tag-green"
-              {...hoverTag}
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.4, delay: 0.43 }}
-              viewport={{ amount: 0.5 }}
-            >Master Planning</motion.span>
-            <motion.span
-              className="feature-tag tag-pink"
-              {...hoverTag}
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.4, delay: 0.51 }}
-              viewport={{ amount: 0.5 }}
-            >Software Development</motion.span>
-          </motion.div>
-          <motion.div
-            className="hero-tags hero-tags-row2"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.45 }}
-            viewport={{ amount: 0.3 }}
-          >
-            <motion.span
-              className="feature-tag tag-purple"
-              {...hoverTag}
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.4, delay: 0.55 }}
-              viewport={{ amount: 0.5 }}
-            >Interior Design</motion.span>
-            <motion.span
-              className="feature-tag tag-gray"
-              {...hoverTag}
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.4, delay: 0.63 }}
-              viewport={{ amount: 0.5 }}
-            >Real Estate</motion.span>
-          </motion.div>
-        </div>
+const Hero = () => {
+  const reduce = useReducedMotion();
 
-        {/* RIGHT: globe visual */}
-        <motion.div
-          className="hero-visual"
-          aria-hidden="true"
-          initial={{ opacity: 0, y: 50, scale: 0.95 }}
-          whileInView={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-          viewport={{ amount: 0.2 }}
-          style={{ y: heroVisualY, scale: heroVisualScale }}
-        >
-          <div className="globe-scene">
-            <div className="visual-grid-bg"></div>
+  // Entrance choreography for the copy; skipped entirely for reduced motion.
+  const enter = (delay, distance = 24) =>
+    reduce
+      ? { initial: false }
+      : {
+          initial: { opacity: 0, y: distance },
+          animate: { opacity: 1, y: 0 },
+          transition: { duration: 0.6, delay, ease: EASE },
+        };
 
-            <div className="globe-float-wrap">
-              <div className="globe-spin-wrap">
-                <img src={globeImg} alt="" className="globe-photo" draggable="false" />
-                <div className="globe-photo-shade"></div>
-                <div className="globe-photo-rim"></div>
-              </div>
-            </div>
+  return (
+    <section className="hero" aria-label="Our services">
+      <div className="hero-copy">
+        {/*<motion.span className="hero-eyebrow" {...enter(0, 16)}>
+          Our Services
+        </motion.span> */}
 
-            <div className="globe-label">
-              <span className="globe-label-title">GMS</span>
-              <span className="globe-label-sub">EST. 2023 · SRI LANKA</span>
-            </div>
-          </div>
+        <motion.h1 className="hero-title" {...enter(0.1)}>
+          Transforming Ideas Into Innovation.
+        </motion.h1>
 
-          <motion.div
-            className="data-chip chip-tl"
-            {...hoverScale}
-            initial={{ opacity: 0, scale: 0 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.4, delay: 0.5, type: "spring", stiffness: 200 }}
-            viewport={{ amount: 0.5 }}
-          >
-            <span className="chip-dot up"></span> PROJECTS <b className="up">&#9650; 120+</b>
-          </motion.div>
-          <motion.div
-            className="data-chip chip-tr"
-            {...hoverScale}
-            initial={{ opacity: 0, scale: 0 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.4, delay: 0.62, type: "spring", stiffness: 200 }}
-            viewport={{ amount: 0.5 }}
-          >
-            <span className="chip-dot up"></span> TEAM <b className="up">&#9650; 25+</b>
-          </motion.div>
-          <motion.div
-            className="data-chip chip-bl"
-            {...hoverScale}
-            initial={{ opacity: 0, scale: 0 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.4, delay: 0.74, type: "spring", stiffness: 200 }}
-            viewport={{ amount: 0.5 }}
-          >
-            <span className="chip-dot up"></span> RATING <b className="up">&#9650; 4.9</b>
-          </motion.div>
-          <motion.div
-            className="data-chip chip-br"
-            {...hoverScale}
-            initial={{ opacity: 0, scale: 0 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.4, delay: 0.86, type: "spring", stiffness: 200 }}
-            viewport={{ amount: 0.5 }}
-          >
-            <span className="chip-dot up"></span> CITIES <b className="up">&#9650; 12+</b>
-          </motion.div>
-        </motion.div>
-      </motion.div>
+        <motion.p className="hero-desc" {...enter(0.2, 18)}>
+          The end-to-end partner Sri Lankan businesses rely on — built for
+          infrastructure, design, and digital growth, from blueprint to
+          delivery.
+        </motion.p>
+      </div>
+
+      {/* Full-bleed wall of service clips drifting behind the copy */}
+      <div className="hero-wall">
+        <MarqueeRow items={ROW_ONE} offset={0} />
+        <MarqueeRow items={ROW_TWO} offset={5} reverse />
+        <div className="hero-veil" aria-hidden="true" />
+      </div>
     </section>
   );
 };
